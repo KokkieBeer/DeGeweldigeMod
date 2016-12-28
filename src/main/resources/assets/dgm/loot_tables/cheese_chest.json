@@ -1,0 +1,81 @@
+{
+    "pools": [
+        {
+			"name":"cheese_chest",
+            "rolls": {
+                "min": 2,
+                "max": 8
+            },
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "dgm:cheese",
+                    "weight": 15,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 3,
+                                "max": 7
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "dgm:cheese_cooked",
+                    "weight": 5,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 1,
+                                "max": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "dgm:cheese_axe",
+                    "weight": 2
+                },
+                {
+                    "type": "item",
+                    "name": "dgm:cheese_ingot",
+                    "weight": 10
+                },
+                {
+                    "type": "item",
+                    "name": "dgm:cheese_multitool",
+                    "weight": 1
+                },
+                {
+                    "type": "item",
+                    "name": "dgm:cheese_seeds",
+                    "weight": 10,
+                    "functions": [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": {
+                                "min": 2,
+                                "max": 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+			"name":"cheese_chest",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "name": "dgm:cheese_apple",
+                    "weight": 1
+                }
+            ]
+        }
+    ]
+}

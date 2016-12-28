@@ -1,0 +1,8 @@
+{
+    "parent": "dgm:block/cheese_farm_land",
+    "textures": {
+        "particle": "dgm:blocks/cheese_dirt",
+        "dirt": "dgm:blocks/cheese_dirt",
+        "top": "dgm:blocks/cheese_farm_land_wet"
+    }
+}

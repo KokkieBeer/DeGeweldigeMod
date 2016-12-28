@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "dgm:blocks/cheese_cookie_block",
+        "down": "dgm:blocks/cheese_block",
+        "up": "dgm:blocks/cheese_block",
+        "north": "dgm:blocks/cheese_cookie_block",
+        "east": "dgm:blocks/cheese_cookie_block",
+        "south": "dgm:blocks/cheese_cookie_block",
+        "west": "dgm:blocks/cheese_cookie_block"
+    }
+}

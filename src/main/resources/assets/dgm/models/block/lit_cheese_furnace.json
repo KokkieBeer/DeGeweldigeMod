@@ -1,0 +1,8 @@
+{
+    "parent": "block/orientable",
+    "textures": {
+        "top": "dgm:blocks/cheese_furnace_top",
+        "front": "dgm:blocks/cheese_furnace_front_on",
+        "side": "dgm:blocks/cheese_furnace_side"
+    }
+}

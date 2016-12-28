@@ -1,0 +1,76 @@
+item.cheese.name=§eCheese§r
+item.cheese_cooked.name=§eCooked Cheese§r
+item.bread_cheese.name=§eCheese in Bread§r
+item.cheese_apple.name=§eCheese Apple§r
+item.cheese_bucket.name=§eCheese Bucket§r
+item.cheese_seeds.name=§eCheese Seeds§r
+
+item.cheese_ingot.name=§eCheese Ingot§r
+item.cheese_arrow.name=§eCheese Arrow§r
+
+item.cheese_helmet.name=§eCheese Helmet§r
+item.cheese_chestplate.name=§eCheese Chestplate§r
+item.cheese_leggings.name=§eCheese Leggings§r
+item.cheese_boots.name=§eCheese Boots§r
+
+item.cheese_sword.name=§eCheese Sword§r
+item.cheese_axe.name=§eCheese Axe§r
+item.cheese_pickaxe.name=§eCheese Pickaxe§r
+item.cheese_shovel.name=§eCheese Shovel§r
+item.cheese_hoe.name=§eCheese Hoe§r
+item.cheese_fly_stick.name=§eCheese Fly Stick§r
+item.cheese_bow.name=§eCheese Bow§r
+item.cheese_multitool.name=§eCheese Multitool§r
+item.flint_and_cheese.name=§eFlint and Cheese§r
+item.cheese_slow_wand.name=§eCheese Slowness Wand§r
+item.cheese_poison_wand.name=§eCheese Poison Wand§r
+item.cheese_damage_wand.name=§eCheese Damage Wand§r
+item.cheese_fire_wand.name=§eCheese Fire Wand§r
+
+item.cheese_axe_head.name=§eCheese Axe Head§r
+item.cheese_pickaxe_head.name=§eCheese Pickaxe Head§r
+item.cheese_shovel_head.name=§eCheese Shovel Head§r
+
+itemGroup.cheese_items=§eCheese Items§r
+itemGroup.cheese_blocks=§eCheese Blocks§r
+
+container.cheese_furnace=§eCheese Furnace§r
+
+tile.cheese_ore_end.name=§eCheese Ore§r
+tile.cheese_ore_nether.name=§eCheese Ore§r
+tile.cheese_ore.name=§eCheese Ore§r
+tile.cheese_block.name=§eCheese Block§r
+tile.quick_cheese.name=§eQuick Cheese§r
+tile.compliment_machine.name=§eCompliment Machine§r
+tile.belgium_flag.name=§0Be§r§elgi§r§4um §r§eFlag§r
+tile.cheese_crafting_table.name=§eCheese Crafting Table§r
+tile.cheese_furnace.name=§eCheese Furnace§r
+tile.lit_cheese_furnace.name=§eLit Cheese Furnace§r
+tile.cheese_cookie_block.name=§eCheese Cookie Block§r
+tile.cheese_board.name=§eCheese Board§r
+tile.cheese_grass.name=§eCheese Grass§r
+tile.cheese_dirt.name=§eCheese Dirt§r
+tile.cheese_grass_path.name=§eCheese Grass Path§r
+tile.cheese_farm_land.name=§eCheese Farm Land§r
+tile.cheese_stairs.name=§eCheese Stairs§r
+tile.cheese_portal.name=§eCheese Portal§r
+tile.cheese_stone.name=§eCheese Stone§r
+tile.cheese_mirror.name=§eCheese Mirror§r
+
+achievement.join=§eJoined§r
+achievement.join.desc=§6Join the world!§r
+achievement.eat_cheese=§eEat cheese§r
+achievement.eat_cheese.desc=§6Eat some Cheese§r
+achievement.fly=§eFLY!§r
+achievement.fly.desc=§6Fly with the Fly Stick§r
+achievement.cookie=§eCookies§r
+achievement.cookie.desc=§6Get a cookie from a Cookie Block§r
+achievement.kill_boss=§eKill the boss§r
+achievement.kill_boss.desc=§6Kill the Cheese Boss§r
+
+entity.CheeseCow.name=§eCheese Cow§r
+entity.CheeseArrow.name=§eCheese Arrow§r
+entity.CheeseBoss.name=§eCheese Boss§r
+entity.CheeseBall.name=§eCheese Ball§r
+
+generator.Cheese=§eCheese§r

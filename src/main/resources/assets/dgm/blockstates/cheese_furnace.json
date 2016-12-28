@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "dgm:cheese_furnace" },
+        "facing=south": { "model": "dgm:cheese_furnace", "y": 180 },
+        "facing=west":  { "model": "dgm:cheese_furnace", "y": 270 },
+        "facing=east":  { "model": "dgm:cheese_furnace", "y": 90 }
+    }
+}
