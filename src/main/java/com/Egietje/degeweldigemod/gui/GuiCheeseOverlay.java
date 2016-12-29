@@ -35,20 +35,20 @@ public class GuiCheeseOverlay extends GuiIngameForge {
 		int y = top;
 		int icon = 16;
 		byte background = 0;
+		mc.renderEngine.bindTexture(new ResourceLocation(Reference.MODID + ":textures/cheese.png"));
 
 		for (int i = 0; i < 10; ++i) {
-			mc.renderEngine.bindTexture(new ResourceLocation(Reference.MODID + ":textures/cheese.png"));
 			int idx = i * 2 + 1;
 			int x = left - i * 8 - 9;
 
 			background = 0;
 			
-			drawTexturedModalRect(x, y, 16 + background * 9, 27, 9, 9);
+			drawModalRectWithCustomSizedTexture(x, y, 0, 0, 9, 9, 8, 9);
 
 			if (idx < level)
-				drawTexturedModalRect(x, y, icon + 36, 27, 9, 9);
+				drawModalRectWithCustomSizedTexture(x, y, 8, 0, 9, 9, 8, 9);
 			else if (idx == level)
-				drawTexturedModalRect(x, y, icon + 45, 27, 9, 9);
+				drawModalRectWithCustomSizedTexture(x, y, 16, 0, 9, 9, 8, 9);
 		}
 		GlStateManager.disableBlend();
 		mc.mcProfiler.endSection();

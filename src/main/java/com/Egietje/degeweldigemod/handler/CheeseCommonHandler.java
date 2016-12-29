@@ -76,11 +76,11 @@ public class CheeseCommonHandler {
 		EntityPlayer player = event.player;
 		ICheese cheese = player.getCapability(CheeseProvider.CHEESE_CAP, null);
 		Random random = new Random();
-		if (random.nextInt(750) == 0) {
+		if (random.nextInt(100) == 0 && !player.isCreative()) {
 			cheese.remove(1);
 		}
-		if(cheese.get() <= 0 && random.nextInt(50) == 0) {
-			player.attackEntityFrom(DamageSource.STARVE, random.nextFloat());
+		if(cheese.get() <= 0 && random.nextInt(25) == 0 && !player.isCreative()) {
+			player.attackEntityFrom(DamageSource.STARVE, 1.5F);
 			cheese.set(0);
 		}
 	}
