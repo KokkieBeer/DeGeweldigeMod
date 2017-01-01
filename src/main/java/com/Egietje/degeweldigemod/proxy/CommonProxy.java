@@ -53,5 +53,4 @@ public class CommonProxy {
 	public void registerHandler(DeGeweldigeMod inst) {
 		NetworkRegistry.INSTANCE.registerGuiHandler(inst, new CheeseGuiHandler());
 	}
-	
 }

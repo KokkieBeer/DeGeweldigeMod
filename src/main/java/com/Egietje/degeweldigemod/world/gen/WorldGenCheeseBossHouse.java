@@ -39,7 +39,7 @@ public class WorldGenCheeseBossHouse extends WorldGenerator {
         Rotation[] arotation = Rotation.values();
         Rotation rotation = arotation[random.nextInt(arotation.length)];
         ChunkPos chunkpos = new ChunkPos(position);
-        StructureBoundingBox structureboundingbox = new StructureBoundingBox(chunkpos.getXStart() - 32, 0, chunkpos.getZStart() - 32, chunkpos.getXEnd() + 32, 256, chunkpos.getZEnd() + 32);
+        StructureBoundingBox structureboundingbox = new StructureBoundingBox(chunkpos.getXStart() - 50, 0, chunkpos.getZStart() - 50, chunkpos.getXEnd() + 50, 256, chunkpos.getZEnd() + 50);
         PlacementSettings placementsettings = (new PlacementSettings()).setRotation(rotation).setBoundingBox(structureboundingbox).setRandom(random);
         MinecraftServer minecraftserver = worldIn.getMinecraftServer();
 		TemplateManager templatemanager = worldIn.getSaveHandler().getStructureTemplateManager();

@@ -21,7 +21,6 @@ public class CheeseMessageHandler implements IMessageHandler<CheeseMessage, IMes
         mainThread.addScheduledTask(new Runnable() {
             @Override
             public void run() {
-                System.out.println(String.format("Received %s and %s from %s", message.getAmount(), message.isCreative(), player.getDisplayName()));
             	player.world.spawnEntity(new EntityItem(player.world, player.posX, player.posY, player.posZ, new ItemStack(Items.COOKIE, message.getAmount())));
             	player.addStat(CheeseAchievements.COOKIE);
                 if(!message.isCreative()) {

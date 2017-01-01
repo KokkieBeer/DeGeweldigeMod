@@ -22,7 +22,7 @@ public class CheeseWand extends Item {
 	
 	public CheeseWand(Potion pot, String effect) {
 		this.setMaxStackSize(1);
-		this.setMaxDamage(192);
+		this.setMaxDamage(52);
 		potion = pot;
 		desc = effect;
 	}
@@ -32,9 +32,9 @@ public class CheeseWand extends Item {
 			List<EntityLivingBase> entities = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, playerIn.getEntityBoundingBox().expand(2, 2, 2));
 			for (int i = 0; i < entities.size(); i++) {
 				EntityLivingBase entity = entities.get(i);
-				if(potion != null && entity != playerIn && potion != MobEffects.SPEED)
+				if(potion != null && entity != playerIn)
 				entity.addPotionEffect(new PotionEffect(potion, 200, 2));
-				if(potion == MobEffects.SPEED)
+				if(potion == null)
 				entity.setFire(10);
 				if(!playerIn.isCreative() && entity != playerIn) {
 					ItemStack stack = playerIn.getHeldItem(handIn);

@@ -25,6 +25,7 @@ import com.Egietje.degeweldigemod.handler.CheeseClientHandler;
 import com.Egietje.degeweldigemod.handler.CheeseCommonHandler;
 import com.Egietje.degeweldigemod.init.CheeseBlocks;
 import com.Egietje.degeweldigemod.init.CheeseItems;
+import com.Egietje.degeweldigemod.init.CheeseUtils;
 import com.google.common.collect.Maps;
 import com.mojang.authlib.GameProfile;
 
@@ -45,6 +46,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Biomes;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.integrated.IntegratedServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;

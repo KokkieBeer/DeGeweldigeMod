@@ -12,6 +12,7 @@ import com.Egietje.degeweldigemod.capability.shouldgiveitems.IShouldGiveItems;
 import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItems;
 import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItemsProvider;
 import com.Egietje.degeweldigemod.init.CheeseAchievements;
+import com.Egietje.degeweldigemod.init.CheeseBiomes;
 import com.Egietje.degeweldigemod.init.CheeseBlocks;
 import com.Egietje.degeweldigemod.init.CheeseItems;
 
@@ -22,6 +23,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.integrated.IntegratedServer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -29,6 +32,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.event.entity.EntityEvent;
@@ -46,42 +50,50 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import paulscode.sound.SoundSystemConfig;
 
 public class CheeseCommonHandler {
-	
+
 	@SubscribeEvent
 	public void onWorldLoad(WorldEvent.Load event) {
 		World world = event.getWorld();
 		IShouldGiveItems shouldGive = world.getCapability(ShouldGiveItemsProvider.SHOULD_GIVE_CAP, null);
 		shouldGive.set(ShouldGiveItems.worldCreateGive);
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerJoin(PlayerLoggedInEvent event) {
 		EntityPlayer player = event.player;
 		World world = player.world;
 		IShouldGiveItems shouldGive = world.getCapability(ShouldGiveItemsProvider.SHOULD_GIVE_CAP, null);
-		if(shouldGive.get()) {
-			if (world.isRemote) return;
+		if (shouldGive.get()) {
+			if (world.isRemote)
+				return;
 			IHadItems hadItems = player.getCapability(HadItemsProvider.HAD_ITEMS_CAP, null);
-			if(!hadItems.get()) {
+			if (!hadItems.get()) {
 				hadItems.set(true);
-				if(!player.inventory.addItemStackToInventory(new ItemStack(CheeseItems.CHEESE, 16))) {
-					player.world.spawnEntity(new EntityItem(player.world, player.posX, player.posY, player.posZ, new ItemStack(CheeseItems.CHEESE, 16)));
+				if (!player.inventory.addItemStackToInventory(new ItemStack(CheeseItems.CHEESE, 16))) {
+					player.world.spawnEntity(new EntityItem(player.world, player.posX, player.posY, player.posZ,
+							new ItemStack(CheeseItems.CHEESE, 16)));
 				}
 			}
 		}
 	}
-	
+
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event) {
 		EntityPlayer player = event.player;
 		ICheese cheese = player.getCapability(CheeseProvider.CHEESE_CAP, null);
 		Random random = new Random();
-		if (random.nextInt(100) == 0 && !player.isCreative()) {
+		World world = player.world;
+		if (random.nextInt(1500) == 0 && !player.isCreative()
+				&& world.getWorldInfo().getDifficulty() != EnumDifficulty.PEACEFUL) {
 			cheese.remove(1);
 		}
-		if(cheese.get() <= 0 && random.nextInt(25) == 0 && !player.isCreative()) {
+		if (cheese.get() <= 0 && random.nextInt(25) == 0 && !player.isCreative()
+				&& world.getWorldInfo().getDifficulty() != EnumDifficulty.PEACEFUL) {
 			player.attackEntityFrom(DamageSource.STARVE, 1.5F);
 			cheese.set(0);
+		}
+		if (world.getWorldInfo().getDifficulty() == EnumDifficulty.PEACEFUL && random.nextInt(5) == 0) {
+			cheese.add(random.nextInt(2));
 		}
 	}
 
@@ -111,7 +123,8 @@ public class CheeseCommonHandler {
 				|| world.getBlockState(pos.east()).getBlock() == CheeseBlocks.CHEESE_FIRE
 				|| world.getBlockState(pos.north()).getBlock() == CheeseBlocks.CHEESE_FIRE
 				|| world.getBlockState(pos.south()).getBlock() == CheeseBlocks.CHEESE_FIRE) {
-			if(!world.isRemote && random.nextInt(20) == 0 && !player.isImmuneToFire() && !player.isCreative() && event.phase == Phase.END) {
+			if (!world.isRemote && random.nextInt(20) == 0 && !player.isImmuneToFire() && !player.isCreative()
+					&& event.phase == Phase.END) {
 				player.setFire(random.nextInt(5) + 5);
 			}
 		}

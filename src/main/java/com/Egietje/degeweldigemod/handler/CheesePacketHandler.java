@@ -1,9 +1,9 @@
 package com.Egietje.degeweldigemod.handler;
 
 import com.Egietje.degeweldigemod.Reference;
-import com.Egietje.degeweldigemod.handler.packet.CheeseMessageHandler;
+import com.Egietje.degeweldigemod.handler.packet.*;
 import com.Egietje.degeweldigemod.init.CheeseAchievements;
-import com.Egietje.degeweldigemod.packet.CheeseMessage;
+import com.Egietje.degeweldigemod.packet.*;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -30,5 +30,6 @@ public class CheesePacketHandler {
 	public void registerPackets() {
 		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("dgmChannel");
 		INSTANCE.registerMessage(CheeseMessageHandler.class, CheeseMessage.class, ID++, Side.SERVER);
+		INSTANCE.registerMessage(CheeseFillMessageHandler.class, CheeseFillMessage.class, ID++, Side.CLIENT);
 	}
 }

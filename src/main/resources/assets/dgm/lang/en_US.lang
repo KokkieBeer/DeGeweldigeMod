@@ -68,6 +68,9 @@ achievement.cookie.desc=§6Get a cookie from a Cookie Block§r
 achievement.kill_boss=§eKill the boss§r
 achievement.kill_boss.desc=§6Kill the Cheese Boss§r
 
+commands.fillcheese.usage=§6/fillcheese§r
+commands.fillcheese.succes=§eSuccesfully filled the Cheese bar§r
+
 entity.CheeseCow.name=§eCheese Cow§r
 entity.CheeseArrow.name=§eCheese Arrow§r
 entity.CheeseBoss.name=§eCheese Boss§r

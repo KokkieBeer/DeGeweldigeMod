@@ -43,12 +43,12 @@ public class GuiCheeseOverlay extends GuiIngameForge {
 
 			background = 0;
 			
-			drawModalRectWithCustomSizedTexture(x, y, 0, 0, 9, 9, 8, 9);
+			drawModalRectWithCustomSizedTexture(x, y, 0, 0, 9, 9, 27, 9);
 
 			if (idx < level)
-				drawModalRectWithCustomSizedTexture(x, y, 8, 0, 9, 9, 8, 9);
+				drawModalRectWithCustomSizedTexture(x, y, 18, 0, 9, 9, 27, 9);
 			else if (idx == level)
-				drawModalRectWithCustomSizedTexture(x, y, 16, 0, 9, 9, 8, 9);
+				drawModalRectWithCustomSizedTexture(x, y, 9, 0, 9, 9, 27, 9);
 		}
 		GlStateManager.disableBlend();
 		mc.mcProfiler.endSection();

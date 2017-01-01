@@ -21,14 +21,14 @@ public class LayerCheeseEars implements LayerRenderer<AbstractClientPlayer> {
 	public void doRenderLayer(AbstractClientPlayer entitylivingbaseIn, float limbSwing, float limbSwingAmount,
 			float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 		if (!"deadmau5".equals(entitylivingbaseIn.getName()) && !entitylivingbaseIn.isInvisible()) {
-			if (!"degeweldigekaas".equals(entitylivingbaseIn.getName())
-					&& !"egietje".equals(entitylivingbaseIn.getName()))
+			if (!"degeweldigekaas".equals(entitylivingbaseIn.getName().toLowerCase())
+					&& !"egietje".equals(entitylivingbaseIn.getName().toLowerCase())) {
 				this.playerRenderer
 						.bindTexture(new ResourceLocation(Reference.MODID + ":textures/entity/cheese_ears_normal.png"));
-			if ("degeweldigekaas".equals(entitylivingbaseIn.getName())
-					|| "egietje".equals(entitylivingbaseIn.getName()))
+			} else {
 				this.playerRenderer.bindTexture(
 						new ResourceLocation(Reference.MODID + ":textures/entity/cheese_ears_special.png"));
+			}
 
 			for (int i = 0; i < 2; ++i) {
 				float f = entitylivingbaseIn.prevRotationYaw

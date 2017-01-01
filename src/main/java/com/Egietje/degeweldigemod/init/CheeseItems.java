@@ -95,7 +95,7 @@ public class CheeseItems {
 		CHEESE_SLOW_WAND = new CheeseWand(MobEffects.SLOWNESS, "Slows all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		CHEESE_POISON_WAND = new CheeseWand(MobEffects.POISON, "Poisons all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		CHEESE_DAMAGE_WAND = new CheeseWand(MobEffects.INSTANT_DAMAGE, "Damages all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
-		CHEESE_FIRE_WAND = new CheeseWand(MobEffects.SPEED, "Sets all entitys in a 2x2x2 area on fire").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_FIRE_WAND = new CheeseWand(null, "Sets all entitys in a 2x2x2 area on fire").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		
 		//Tool heads
 		CHEESE_PICKAXE_HEAD = new Item().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
