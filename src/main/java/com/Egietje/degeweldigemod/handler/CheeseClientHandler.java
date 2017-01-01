@@ -87,7 +87,8 @@ public class CheeseClientHandler {
 	@SubscribeEvent
 	public void onPostRenderOverlay(RenderGameOverlayEvent.Post event) {
 		if (event.getType() == ElementType.FOOD) {
-			(new GuiCheeseOverlay(Minecraft.getMinecraft())).renderCheese(event.getResolution().getScaledWidth(), event.getResolution().getScaledHeight());
+			(new GuiCheeseOverlay(Minecraft.getMinecraft())).renderCheese(event.getResolution().getScaledWidth(),
+					event.getResolution().getScaledHeight());
 		}
 	}
 
@@ -135,7 +136,6 @@ public class CheeseClientHandler {
 							ShouldGiveItems.worldCreateGive = false;
 							button1.displayString = "Give Items: OFF";
 							button1.enabled = true;
-
 						} else {
 							ShouldGiveItems.worldCreateGive = false;
 							button1.displayString = "Give Items: OFF";
