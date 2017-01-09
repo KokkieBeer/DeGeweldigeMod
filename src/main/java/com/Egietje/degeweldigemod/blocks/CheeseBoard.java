@@ -75,7 +75,9 @@ public class CheeseBoard extends Block implements ITileEntityProvider {
         TileEntity tileentity = worldIn.getTileEntity(pos);
         if (tileentity instanceof TileEntityCheeseBoard) {
         	TileEntityCheeseBoard cheese = (TileEntityCheeseBoard) tileentity;
-            worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(CheeseItems.CHEESE, cheese.CHEESE_COUNT)));
+        	while (cheese.CHEESE_COUNT > 0) {
+        		cheese.removeCheese();
+        	}
         }
 
         super.breakBlock(worldIn, pos, state);

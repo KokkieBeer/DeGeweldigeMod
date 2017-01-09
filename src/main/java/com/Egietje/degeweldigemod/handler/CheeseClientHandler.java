@@ -1,77 +1,38 @@
 package com.Egietje.degeweldigemod.handler;
 
+import java.lang.reflect.Field;
+import java.util.List;
+
+import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItems;
+import com.Egietje.degeweldigemod.entities.tileentities.render.RenderCheeseMirror;
+import com.Egietje.degeweldigemod.gui.GuiCheeseOverlay;
+import com.Egietje.degeweldigemod.init.CheeseAchievements;
+import com.Egietje.degeweldigemod.init.CheeseItems;
+import com.Egietje.degeweldigemod.init.CheeseUtils;
+import com.Egietje.degeweldigemod.render.LayerCheeseCape;
+import com.Egietje.degeweldigemod.render.LayerCheeseEars;
+import com.google.common.base.Throwables;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.GuiCreateWorld;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.multiplayer.WorldClient;
+import net.minecraft.client.renderer.entity.RenderPlayer;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.event.world.WorldEvent;
-import net.minecraftforge.fml.client.config.GuiButtonExt;
-import net.minecraftforge.fml.client.config.GuiConfig;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.util.List;
-import java.util.Random;
-
-import org.apache.commons.lang3.StringUtils;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.GL11;
-
-import com.Egietje.degeweldigemod.DeGeweldigeMod;
-import com.Egietje.degeweldigemod.Reference;
-import com.Egietje.degeweldigemod.capability.cheese.CheeseProvider;
-import com.Egietje.degeweldigemod.capability.haditems.HadItemsProvider;
-import com.Egietje.degeweldigemod.capability.haditems.IHadItems;
-import com.Egietje.degeweldigemod.capability.shouldgiveitems.IShouldGiveItems;
-import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItems;
-import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItemsProvider;
-import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItemsStorage;
-import com.Egietje.degeweldigemod.entities.tileentities.render.RenderCheeseMirror;
-import com.Egietje.degeweldigemod.gui.GuiCheeseOverlay;
-import com.Egietje.degeweldigemod.init.CheeseAchievements;
-import com.Egietje.degeweldigemod.init.CheeseItems;
-import com.Egietje.degeweldigemod.init.CheeseUtils;
-import com.Egietje.degeweldigemod.render.*;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiCreateWorld;
-import net.minecraft.client.gui.GuiListWorldSelection;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.gui.GuiWorldEdit;
-import net.minecraft.client.gui.GuiWorldSelection;
-import net.minecraft.client.model.ModelPlayer;
-import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.VertexBuffer;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.entity.RenderPlayer;
-import net.minecraft.client.renderer.entity.layers.LayerElytra;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.inventory.EntityEquipmentSlot;
-import net.minecraft.util.FoodStats;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.GameType;
-import net.minecraft.world.WorldSettings;
-import net.minecraft.world.WorldType;
-import net.minecraft.world.storage.WorldInfo;
 
 @SideOnly(Side.CLIENT)
 public class CheeseClientHandler {
@@ -92,23 +53,35 @@ public class CheeseClientHandler {
 		}
 	}
 
+	private static final Field inMoreWorldOptionsDisplay = ReflectionHelper.findField(GuiCreateWorld.class,
+			"field_146344_y", "inMoreWorldOptionsDisplay");
+	private static final Field gameMode = ReflectionHelper.findField(GuiCreateWorld.class, "field_146342_r",
+			"gameMode");
+
 	@SubscribeEvent
 	public void onGuiPostInit(GuiScreenEvent.InitGuiEvent.Post event) {
 		GuiScreen gui = event.getGui();
 		if (gui instanceof GuiCreateWorld) {
-			List<GuiButton> buttonList = event.getButtonList();
-			GuiButton giveItem;
-			giveItem = addButton(new GuiButton(11, gui.width / 2 + 5, 187, 150, 20, "Give Items: OFF"), buttonList);
-			giveItem.visible = (Boolean) CheeseUtils.getField(GuiCreateWorld.class, gui, "inMoreWorldOptionsDisplay");
-			for (int i = 0; i < buttonList.size(); i++) {
-				GuiButton button = event.getButtonList().get(i);
-				if (button.id == 3) {
-					if ((Boolean) CheeseUtils.getField(GuiCreateWorld.class, gui, "inMoreWorldOptionsDisplay")) {
-						button.xPosition = gui.width / 2 - 155;
-					} else {
-						button.xPosition = gui.width / 2 - 75;
+			try {
+				List<GuiButton> buttonList = event.getButtonList();
+				GuiButton giveItem;
+				giveItem = addButton(new GuiButton(11, gui.width / 2 + 5, 187, 150, 20, "Give Items: OFF"), buttonList);
+				giveItem.visible = inMoreWorldOptionsDisplay.getBoolean(gui);
+				ShouldGiveItems.worldCreateGive = false;
+				for (int i = 0; i < buttonList.size(); i++) {
+					GuiButton button = event.getButtonList().get(i);
+					if (button.id == 3) {
+						if (inMoreWorldOptionsDisplay.getBoolean(gui)) {
+							button.xPosition = gui.width / 2 - 155;
+						} else {
+							button.xPosition = gui.width / 2 - 75;
+						}
 					}
 				}
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
 			}
 		}
 	}
@@ -128,33 +101,44 @@ public class CheeseClientHandler {
 				for (int i = 0; i < event.getButtonList().size(); i++) {
 					GuiButton button1 = event.getButtonList().get(i);
 					if (button1.id == 11) {
-						if ("survival".equals(CheeseUtils.getField(GuiCreateWorld.class, gui, "gameMode"))) {
-							ShouldGiveItems.worldCreateGive = false;
-							button1.displayString = "Give Items: OFF";
-							button1.enabled = false;
-						} else if ("hardcore".equals(CheeseUtils.getField(GuiCreateWorld.class, gui, "gameMode"))) {
-							ShouldGiveItems.worldCreateGive = false;
-							button1.displayString = "Give Items: OFF";
-							button1.enabled = true;
-						} else {
-							ShouldGiveItems.worldCreateGive = false;
-							button1.displayString = "Give Items: OFF";
-							button1.enabled = true;
+						try {
+							if ("survival".equals(gameMode.get(gui))) {
+								ShouldGiveItems.worldCreateGive = false;
+								button1.displayString = "Give Items: OFF";
+								button1.enabled = false;
+							} else if ("hardcore".equals(gameMode.get(gui))) {
+								ShouldGiveItems.worldCreateGive = false;
+								button1.displayString = "Give Items: OFF";
+								button1.enabled = true;
+							} else {
+								ShouldGiveItems.worldCreateGive = false;
+								button1.displayString = "Give Items: OFF";
+								button1.enabled = true;
+							}
+						} catch (IllegalArgumentException e) {
+							e.printStackTrace();
+						} catch (IllegalAccessException e) {
+							e.printStackTrace();
 						}
 					}
 				}
 			} else if (button.id == 3) {
 				for (int i = 0; i < event.getButtonList().size(); i++) {
 					GuiButton button1 = event.getButtonList().get(i);
-					if (button1.id == 11) {
-						button1.visible = !(Boolean) CheeseUtils.getField(GuiCreateWorld.class, gui,
-								"inMoreWorldOptionsDisplay");
-					} else if (button1.id == 3) {
-						if (!(Boolean) CheeseUtils.getField(GuiCreateWorld.class, gui, "inMoreWorldOptionsDisplay")) {
-							button1.xPosition = gui.width / 2 - 155;
-						} else {
-							button1.xPosition = gui.width / 2 - 75;
+					try {
+						if (button1.id == 11) {
+							button1.visible = !inMoreWorldOptionsDisplay.getBoolean(gui);
+						} else if (button1.id == 3) {
+							if (!inMoreWorldOptionsDisplay.getBoolean(gui)) {
+								button1.xPosition = gui.width / 2 - 155;
+							} else {
+								button1.xPosition = gui.width / 2 - 75;
+							}
 						}
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
 					}
 				}
 			} else if (button.id == 11) {

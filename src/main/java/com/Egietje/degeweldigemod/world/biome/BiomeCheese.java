@@ -94,6 +94,7 @@ public class BiomeCheese extends Biome {
             int j = rand.nextInt(16) + 8;
             BlockPos blockpos = worldIn.getHeight(pos.add(i, 0, j)).up();
             CHEESE_BOSS_HOUSE_GENERATOR.generate(worldIn, rand, blockpos);
+            System.out.println(blockpos.getX() + ":" + blockpos.getY() + ":" + blockpos.getZ());
 		}
 		this.theBiomeDecorator.flowersPerChunk = 4;
 		this.theBiomeDecorator.grassPerChunk = 10;
@@ -105,7 +106,6 @@ public class BiomeCheese extends Biome {
 			int l = rand.nextInt(worldIn.getHeight(pos.add(j, 0, k)).getY() + 32);
 			DOUBLE_PLANT_GENERATOR.generate(worldIn, rand, pos.add(j, l, k));
 		}
-		worldIn.getChunkProvider().getLoadedChunk(pos.getX(), pos.getZ()).checkLight();
 		super.decorate(worldIn, rand, pos);
 	}
 

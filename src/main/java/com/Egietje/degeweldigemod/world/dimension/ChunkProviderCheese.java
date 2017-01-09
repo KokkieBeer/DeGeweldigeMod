@@ -5,6 +5,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.Egietje.degeweldigemod.init.CheeseBlocks;
+import com.Egietje.degeweldigemod.world.gen.MapGenCheeseVillage;
 
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.state.IBlockState;
@@ -60,6 +61,7 @@ public class ChunkProviderCheese implements IChunkGenerator {
 	private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
 	private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
 	private MapGenBase ravineGenerator = new MapGenRavine();
+	private MapGenCheeseVillage cheeseVillageGenerator = new MapGenCheeseVillage();
 	private StructureOceanMonument oceanMonumentGenerator = new StructureOceanMonument();
 	private Biome[] biomesForGeneration;
 	double[] mainNoiseRegion;
@@ -82,6 +84,9 @@ public class ChunkProviderCheese implements IChunkGenerator {
 							net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.SCATTERED_FEATURE);
 			ravineGenerator = net.minecraftforge.event.terraingen.TerrainGen.getModdedMapGen(ravineGenerator,
 					net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.RAVINE);
+			cheeseVillageGenerator = (MapGenCheeseVillage) net.minecraftforge.event.terraingen.TerrainGen
+					.getModdedMapGen(cheeseVillageGenerator,
+							net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.CUSTOM);
 			oceanMonumentGenerator = (StructureOceanMonument) net.minecraftforge.event.terraingen.TerrainGen
 					.getModdedMapGen(oceanMonumentGenerator,
 							net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.OCEAN_MONUMENT);
@@ -226,6 +231,7 @@ public class ChunkProviderCheese implements IChunkGenerator {
 
 			if (this.settings.useVillages) {
 				this.villageGenerator.generate(this.worldObj, x, z, chunkprimer);
+				this.cheeseVillageGenerator.generate(this.worldObj, x, z, chunkprimer);
 			}
 
 			if (this.settings.useStrongholds) {
@@ -383,6 +389,7 @@ public class ChunkProviderCheese implements IChunkGenerator {
 
 			if (this.settings.useVillages) {
 				flag = this.villageGenerator.generateStructure(this.worldObj, this.rand, chunkpos);
+				this.cheeseVillageGenerator.generateStructure(this.worldObj, this.rand, chunkpos);
 			}
 
 			if (this.settings.useStrongholds) {
@@ -453,7 +460,7 @@ public class ChunkProviderCheese implements IChunkGenerator {
 					}
 				}
 			}
-		} 
+		}
 
 		net.minecraftforge.event.ForgeEventFactory.onChunkPopulate(false, this, this.worldObj, this.rand, x, z, flag);
 
@@ -495,13 +502,18 @@ public class ChunkProviderCheese implements IChunkGenerator {
 						? this.oceanMonumentGenerator.getClosestStrongholdPos(worldIn, position, p_180513_4_)
 						: ("Village".equals(structureName) && this.villageGenerator != null
 								? this.villageGenerator.getClosestStrongholdPos(worldIn, position, p_180513_4_)
-								: ("Mineshaft".equals(structureName) && this.mineshaftGenerator != null
-										? this.mineshaftGenerator.getClosestStrongholdPos(worldIn, position,
+								: ("CheeseVillage".equals(structureName) && this.cheeseVillageGenerator != null
+										? this.cheeseVillageGenerator.getClosestStrongholdPos(worldIn, position,
 												p_180513_4_)
-										: ("Temple".equals(structureName) && this.scatteredFeatureGenerator != null
-												? this.scatteredFeatureGenerator.getClosestStrongholdPos(worldIn,
-														position, p_180513_4_)
-												: null))));
+										: ("Mineshaft".equals(structureName) && this.mineshaftGenerator != null
+												? this.mineshaftGenerator.getClosestStrongholdPos(worldIn, position,
+														p_180513_4_)
+												: ("Temple".equals(structureName)
+														&& this.scatteredFeatureGenerator != null
+																? this.scatteredFeatureGenerator
+																		.getClosestStrongholdPos(worldIn, position,
+																				p_180513_4_)
+																: null)))));
 	}
 
 	public void recreateStructures(Chunk chunkIn, int x, int z) {
@@ -512,6 +524,7 @@ public class ChunkProviderCheese implements IChunkGenerator {
 
 			if (this.settings.useVillages) {
 				this.villageGenerator.generate(this.worldObj, x, z, (ChunkPrimer) null);
+				this.cheeseVillageGenerator.generate(this.worldObj, x, z, (ChunkPrimer) null);
 			}
 
 			if (this.settings.useStrongholds) {

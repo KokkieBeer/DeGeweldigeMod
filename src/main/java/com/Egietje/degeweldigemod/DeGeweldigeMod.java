@@ -6,7 +6,6 @@ import com.Egietje.degeweldigemod.entities.*;
 import com.Egietje.degeweldigemod.handler.*;
 import com.Egietje.degeweldigemod.init.*;
 import com.Egietje.degeweldigemod.proxy.*;
-import com.Egietje.degeweldigemod.world.biome.WorldTypeCheese;
 import com.Egietje.degeweldigemod.world.dimension.CheeseTeleporter;
 import com.Egietje.degeweldigemod.world.gen.CheeseGeneration;
 
@@ -60,7 +59,7 @@ public class DeGeweldigeMod {
 		new CheeseDimensions();
 		proxy.registerModels();
 		proxy.renderEntities();
-		proxy.setTitle("Minecraft - " + Minecraft.getMinecraft().getVersion() + " | DeGeweldigeMod - " + Reference.VERSION);
+		proxy.setTitle("Minecraft - " + Minecraft.getMinecraft().getVersion().substring(0, 6) + " | DeGeweldigeMod - " + Reference.VERSION);
 	}
 	
 	@EventHandler
@@ -75,7 +74,7 @@ public class DeGeweldigeMod {
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event) {
-		new WorldTypeCheese();
+		proxy.registerStructure();
 	}
 	
 	@EventHandler

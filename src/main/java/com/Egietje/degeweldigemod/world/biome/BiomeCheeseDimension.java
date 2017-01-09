@@ -67,8 +67,6 @@ public class BiomeCheeseDimension extends Biome {
             BlockPos blockpos = worldIn.getHeight(pos.add(i, 0, j)).up();
             CHEESE_HOUSE_GENERATOR.generate(worldIn, rand, blockpos);
 		}
-		
-		worldIn.getChunkProvider().getLoadedChunk(pos.getX(), pos.getZ()).checkLight();
 		super.decorate(worldIn, rand, pos);
 	}
 

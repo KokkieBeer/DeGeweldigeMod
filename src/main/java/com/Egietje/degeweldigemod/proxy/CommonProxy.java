@@ -10,7 +10,9 @@ import com.Egietje.degeweldigemod.handler.CheeseCapabilityHandler;
 import com.Egietje.degeweldigemod.handler.CheeseCommonHandler;
 import com.Egietje.degeweldigemod.handler.CheeseGuiHandler;
 import com.Egietje.degeweldigemod.world.gen.CheeseGeneration;
+import com.Egietje.degeweldigemod.world.gen.MapGenCheeseVillage;
 
+import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -20,6 +22,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class CommonProxy {
+	
+	public void registerStructure() {
+		MapGenStructureIO.registerStructure(MapGenCheeseVillage.Start.class, "CheeseVillage");
+	}
 	
 	public void registerModels() {
 		

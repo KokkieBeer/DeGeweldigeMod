@@ -1,5 +1,6 @@
 package com.Egietje.degeweldigemod.items;
 
+import com.Egietje.degeweldigemod.DeGeweldigeMod;
 import com.Egietje.degeweldigemod.capability.cheese.CheeseProvider;
 import com.Egietje.degeweldigemod.capability.cheese.ICheese;
 import com.Egietje.degeweldigemod.capability.haditems.HadItemsProvider;
@@ -11,6 +12,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class Cheese extends ItemFood {
@@ -30,5 +33,4 @@ public class Cheese extends ItemFood {
 		}
 		return super.onItemUseFinish(stack, worldIn, entityLiving);
 	}
-	
 }
