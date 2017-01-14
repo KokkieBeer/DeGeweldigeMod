@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.init.MobEffects;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -16,6 +17,7 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -53,8 +55,10 @@ public class EntityCheeseBall extends EntityFireball {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EntityCheeseBall(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ) {
+	public EntityCheeseBall(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ,
+			EntityLivingBase shooter) {
 		super(worldIn, x, y, z, accelX, accelY, accelZ);
+		this.shootingEntity = shooter;
 		this.setSize(0.3125F, 0.3125F);
 	}
 
@@ -84,7 +88,7 @@ public class EntityCheeseBall extends EntityFireball {
 	 * Called when this EntityFireball hits a block or entity.
 	 */
 	protected void onImpact(RayTraceResult result) {
-		if (!this.world.isRemote) {
+		if (!this.world.isRemote && this.shootingEntity != result.entityHit) {
 			if (result.entityHit != null) {
 				if (this.shootingEntity != null) {
 					if (result.entityHit.attackEntityFrom(DamageSource.causeMobDamage(this.shootingEntity), 8.0F)) {
@@ -97,7 +101,7 @@ public class EntityCheeseBall extends EntityFireball {
 				} else {
 					result.entityHit.attackEntityFrom(DamageSource.MAGIC, 5.0F);
 				}
-				if(result.entityHit instanceof EntityPlayer) {
+				if (result.entityHit instanceof EntityPlayer) {
 					EntityPlayer player = (EntityPlayer) result.entityHit;
 					world.setBlockState(player.getPosition(), CheeseBlocks.QUICK_CHEESE.getDefaultState());
 				}

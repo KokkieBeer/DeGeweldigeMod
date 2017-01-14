@@ -20,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import scala.math.LowPriorityOrderingImplicits;
 
 public class CheeseBlocks {
 	
@@ -45,6 +46,8 @@ public class CheeseBlocks {
 	public static Block CHEESE_STONE;
 	public static CheeseFire CHEESE_FIRE;
 	public static Block CHEESE_MIRROR;
+	public static Block CHEESE_LOG;
+	public static Block CHEESE_PLANKS;
 	
 	public CheeseBlocks() {
 		init();
@@ -74,6 +77,8 @@ public class CheeseBlocks {
 		CHEESE_STONE = new CheeseStone().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.0F);
 		CHEESE_FIRE = (CheeseFire) new CheeseFire().setHardness(0.0F);
 		CHEESE_MIRROR = new CheeseMirror().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.5F);
+		CHEESE_LOG = new CheeseLog().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(2.0F);
+		CHEESE_PLANKS = new CheesePlanks().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.25F);
 		
 		CheeseUtils.setNames(CHEESE_ORE, "cheese_ore");
 		CheeseUtils.setNames(CHEESE_ORE_NETHER, "cheese_ore_nether");
@@ -97,6 +102,8 @@ public class CheeseBlocks {
 		CheeseUtils.setNames(CHEESE_STONE, "cheese_stone");
 		CheeseUtils.setNames(CHEESE_FIRE, "cheese_fire");
 		CheeseUtils.setNames(CHEESE_MIRROR, "cheese_mirror");
+		CheeseUtils.setNames(CHEESE_LOG, "cheese_log");
+		CheeseUtils.setNames(CHEESE_PLANKS, "cheese_planks");
 	}	
 	
 	public void register() {
@@ -124,6 +131,8 @@ public class CheeseBlocks {
 		this.registerBlock(CHEESE_MIRROR);
 		FluidRegistry.registerFluid(CheeseFluid2.INSTANCE);
 		this.registerBlock(CheeseFluid.INSTANCE);
+		this.registerBlock(CHEESE_LOG);
+		this.registerBlock(CHEESE_PLANKS);
 	}	
 	
 	private void registerBlock(Block block) {

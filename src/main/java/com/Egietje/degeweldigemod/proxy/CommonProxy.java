@@ -11,6 +11,7 @@ import com.Egietje.degeweldigemod.handler.CheeseCommonHandler;
 import com.Egietje.degeweldigemod.handler.CheeseGuiHandler;
 import com.Egietje.degeweldigemod.world.gen.CheeseGeneration;
 import com.Egietje.degeweldigemod.world.gen.MapGenCheeseVillage;
+import com.Egietje.degeweldigemod.world.gen.StructureCheeseVillagePieces;
 
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +26,7 @@ public class CommonProxy {
 	
 	public void registerStructure() {
 		MapGenStructureIO.registerStructure(MapGenCheeseVillage.Start.class, "CheeseVillage");
+		StructureCheeseVillagePieces.registerVillagePieces();
 	}
 	
 	public void registerModels() {

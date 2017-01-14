@@ -109,19 +109,19 @@ public class EntityCheeseBoss extends EntityMob implements IRangedAttackMob {
 	}
 
 	public static void registerFixesCheeseBoss(DataFixer fixer) {
-        EntityLiving.registerFixesMob(fixer, EntityCheeseBoss.class);
-    }
+		EntityLiving.registerFixesMob(fixer, EntityCheeseBoss.class);
+	}
 
 	@Override
 	public void onDeath(DamageSource cause) {
 		if (!world.isRemote) {
-			world.spawnEntity(
-					new EntityItem(world, this.posX, this.posY, this.posZ, new ItemStack(Items.DIAMOND, 3)));
+			world.spawnEntity(new EntityItem(world, this.posX, this.posY, this.posZ, new ItemStack(Items.DIAMOND, 3)));
 			world.spawnEntity(new EntityItem(world, this.posX, this.posY, this.posZ,
 					new ItemStack(CheeseItems.CHEESE, rand.nextInt(4) + 7)));
-			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class, this.getEntityBoundingBox().expand(50.0D, 100.0D, 50.0D))) {
-                entityplayer.addStat(CheeseAchievements.KILL);
-            }
+			for (EntityPlayer entityplayer : this.world.getEntitiesWithinAABB(EntityPlayer.class,
+					this.getEntityBoundingBox().expand(50.0D, 100.0D, 50.0D))) {
+				entityplayer.addStat(CheeseAchievements.KILL);
+			}
 		}
 		super.onDeath(cause);
 	}
@@ -133,12 +133,13 @@ public class EntityCheeseBoss extends EntityMob implements IRangedAttackMob {
 
 	protected void initEntityAI() {
 		this.tasks.addTask(1, new EntityAISwimming(this));
-        this.tasks.addTask(2, new EntityAIAttackRanged(this, 1.0D, 40, 20.0F));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(7, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, false, NOT_UNDEAD));
+		this.tasks.addTask(2, new EntityAIAttackRanged(this, 1.0D, 40, 20.0F));
+		this.tasks.addTask(5, new EntityAIWander(this, 1.0D));
+		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		this.tasks.addTask(7, new EntityAILookIdle(this));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
+		this.targetTasks.addTask(2,
+				new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, false, false, NOT_UNDEAD));
 	}
 
 	@Override
@@ -199,9 +200,9 @@ public class EntityCheeseBoss extends EntityMob implements IRangedAttackMob {
 						&& this.canEntityBeSeen(entity)) {
 					if (entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.disableDamage) {
 						this.updateWatchedTargetId(i, 0);
-					} else if(entity instanceof EntityPlayer && !((EntityPlayer) entity).capabilities.isCreativeMode) {
-						if(rand.nextInt(10000) == 0)
-						this.launchCheeseToEntity(i + 1, (EntityLivingBase) entity);
+					} else if (entity instanceof EntityPlayer && !((EntityPlayer) entity).capabilities.isCreativeMode) {
+						if (rand.nextInt(10000) == 0)
+							this.launchCheeseToEntity(i + 1, (EntityLivingBase) entity);
 						this.nextHeadUpdate[i - 1] = this.ticksExisted + 40 + this.rand.nextInt(20);
 						this.idleHeadUpdates[i - 1] = 0;
 					} else {
@@ -212,8 +213,8 @@ public class EntityCheeseBoss extends EntityMob implements IRangedAttackMob {
 					this.updateWatchedTargetId(i, 0);
 				}
 			} else {
-				List<EntityLivingBase> list = this.world.<EntityLivingBase>getEntitiesWithinAABB(
-						EntityLivingBase.class, this.getEntityBoundingBox().expand(20.0D, 8.0D, 20.0D),
+				List<EntityLivingBase> list = this.world.<EntityLivingBase>getEntitiesWithinAABB(EntityLivingBase.class,
+						this.getEntityBoundingBox().expand(20.0D, 8.0D, 20.0D),
 						Predicates.<EntityLivingBase>and(NOT_UNDEAD, EntitySelectors.NOT_SPECTATING));
 
 				for (int j2 = 0; j2 < 10 && !list.isEmpty(); ++j2) {

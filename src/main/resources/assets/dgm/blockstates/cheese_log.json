@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":    { "model": "dgm:cheese_log" },
+        "axis=z":     { "model": "dgm:cheese_log", "x": 90 },
+        "axis=x":     { "model": "dgm:cheese_log", "x": 90, "y": 90 },
+        "axis=none":   { "model": "dgm:cheese_bark" }
+    }
+}

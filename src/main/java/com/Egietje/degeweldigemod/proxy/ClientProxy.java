@@ -88,6 +88,7 @@ public class ClientProxy extends CommonProxy {
 		registerItemModel(CheeseItems.CHEESE_POISON_WAND, 0);
 		registerItemModel(CheeseItems.CHEESE_DAMAGE_WAND, 0);
 		registerItemModel(CheeseItems.CHEESE_FIRE_WAND, 0);
+		registerItemModel(CheeseItems.CHEESE_WAND, 0);
 
 		//Armor
 		registerItemModel(CheeseItems.CHEESE_HELMET, 0);
@@ -122,6 +123,8 @@ public class ClientProxy extends CommonProxy {
 		registerBlockModel(CheeseBlocks.CHEESE_STONE, 0);
 		registerBlockModel(CheeseBlocks.CHEESE_FIRE, 0);
 		registerBlockModel(CheeseBlocks.CHEESE_MIRROR, 0);
+		registerBlockModel(CheeseBlocks.CHEESE_LOG, 0);
+		registerBlockModel(CheeseBlocks.CHEESE_PLANKS, 0);
 
 		//Fluids
 		final Item MOLTEN_CHEESE = Item.getItemFromBlock(CheeseFluid.INSTANCE);

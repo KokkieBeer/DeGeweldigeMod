@@ -9,15 +9,15 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderCheeseArrow extends RenderArrow<EntityCheeseArrow>
-{
-    public static final ResourceLocation CHEESE_ARROW_TEXTURES = new ResourceLocation(Reference.MODID + ":textures/entity/cheese_arrow.png");
+public class RenderCheeseArrow extends RenderArrow<EntityCheeseArrow> {
+	public static final ResourceLocation CHEESE_ARROW_TEXTURES = new ResourceLocation(
+			Reference.MODID + ":textures/entity/cheese_arrow.png");
 
-    public RenderCheeseArrow(RenderManager manager) {
-        super(manager);
-    }
+	public RenderCheeseArrow(RenderManager manager) {
+		super(manager);
+	}
 
-    protected ResourceLocation getEntityTexture(EntityCheeseArrow entity) {
-        return CHEESE_ARROW_TEXTURES;
-    }
+	protected ResourceLocation getEntityTexture(EntityCheeseArrow entity) {
+		return CHEESE_ARROW_TEXTURES;
+	}
 }

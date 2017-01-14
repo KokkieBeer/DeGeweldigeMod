@@ -42,6 +42,7 @@ public class CheeseItems {
 	public static Item CHEESE_POISON_WAND;
 	public static Item CHEESE_DAMAGE_WAND;
 	public static Item CHEESE_FIRE_WAND;
+	public static Item CHEESE_WAND;
 	
 	//Armor
 	public static Item CHEESE_HELMET;
@@ -92,10 +93,11 @@ public class CheeseItems {
 		CHEESE_BOW = new CheeseBow().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		CHEESE_MULTITOOL = new CheeseMultitool(CHEESE_TOOL_MATERIAL, 4671).setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		FLINT_AND_CHEESE = new FlintAndCheese().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
-		CHEESE_SLOW_WAND = new CheeseWand(MobEffects.SLOWNESS, "Slows all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
-		CHEESE_POISON_WAND = new CheeseWand(MobEffects.POISON, "Poisons all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
-		CHEESE_DAMAGE_WAND = new CheeseWand(MobEffects.INSTANT_DAMAGE, "Damages all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
-		CHEESE_FIRE_WAND = new CheeseWand(null, "Sets all entitys in a 2x2x2 area on fire").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_SLOW_WAND = new CheesePotionWand(MobEffects.SLOWNESS, "Slows all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_POISON_WAND = new CheesePotionWand(MobEffects.POISON, "Poisons all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_DAMAGE_WAND = new CheesePotionWand(MobEffects.INSTANT_DAMAGE, "Damages all entitys in a 2x2x2 area").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_FIRE_WAND = new CheesePotionWand(null, "Sets all entitys in a 2x2x2 area on fire").setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_WAND = new CheeseWand().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		
 		//Tool heads
 		CHEESE_PICKAXE_HEAD = new Item().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
@@ -145,6 +147,7 @@ public class CheeseItems {
 		CheeseUtils.setNames(CHEESE_POISON_WAND, "cheese_poison_wand");
 		CheeseUtils.setNames(CHEESE_DAMAGE_WAND, "cheese_damage_wand");
 		CheeseUtils.setNames(CHEESE_FIRE_WAND, "cheese_fire_wand");
+		CheeseUtils.setNames(CHEESE_WAND, "cheese_wand");
 		
 		//Armor
 		CheeseUtils.setNames(CHEESE_HELMET, "cheese_helmet");
@@ -168,6 +171,7 @@ public class CheeseItems {
 		GameRegistry.register(CHEESE_POISON_WAND);
 		GameRegistry.register(CHEESE_DAMAGE_WAND);
 		GameRegistry.register(CHEESE_FIRE_WAND);
+		GameRegistry.register(CHEESE_WAND);
 		
 		//Armor
 		GameRegistry.register(CHEESE_HELMET);

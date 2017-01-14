@@ -47,7 +47,7 @@ public class CheeseClientHandler {
 
 	@SubscribeEvent
 	public void onPostRenderOverlay(RenderGameOverlayEvent.Post event) {
-		if (event.getType() == ElementType.FOOD) {
+		if (event.getType() == ElementType.FOOD && event.getType() != ElementType.AIR) {
 			(new GuiCheeseOverlay(Minecraft.getMinecraft())).renderCheese(event.getResolution().getScaledWidth(),
 					event.getResolution().getScaledHeight());
 		}

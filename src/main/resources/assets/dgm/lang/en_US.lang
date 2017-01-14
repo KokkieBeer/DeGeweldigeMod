@@ -26,6 +26,7 @@ item.cheese_slow_wand.name=§eCheese Slowness Wand§r
 item.cheese_poison_wand.name=§eCheese Poison Wand§r
 item.cheese_damage_wand.name=§eCheese Damage Wand§r
 item.cheese_fire_wand.name=§eCheese Fire Wand§r
+item.cheese_wand.name=§eCheese Wand§r
 
 item.cheese_axe_head.name=§eCheese Axe Head§r
 item.cheese_pickaxe_head.name=§eCheese Pickaxe Head§r
@@ -56,6 +57,8 @@ tile.cheese_stairs.name=§eCheese Stairs§r
 tile.cheese_portal.name=§eCheese Portal§r
 tile.cheese_stone.name=§eCheese Stone§r
 tile.cheese_mirror.name=§eCheese Mirror§r
+tile.cheese_log.name=§eCheese Log§r
+tile.cheese_planks.name=§eCheese Planks§r
 
 achievement.join=§eJoined§r
 achievement.join.desc=§6Join the world!§r
