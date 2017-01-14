@@ -6,7 +6,9 @@ import com.Egietje.degeweldigemod.entities.cheesearrow.EntityCheeseArrow;
 import com.Egietje.degeweldigemod.entities.cheeseball.EntityCheeseBall;
 import com.Egietje.degeweldigemod.entities.cheeseboss.EntityCheeseBoss;
 import com.Egietje.degeweldigemod.entities.cheesecow.EntityCheeseCow;
+import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseBoard;
 import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseFurnace;
+import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseMirror;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 
@@ -20,6 +22,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CheeseMobs {
+	private int ID = 0;
 	
 	public CheeseMobs() {
 		register();
@@ -28,10 +31,12 @@ public class CheeseMobs {
 	
 	public void register() {
 		GameRegistry.registerTileEntity(TileEntityCheeseFurnace.class, "CheeseFurnace");
-		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_cow"), EntityCheeseCow.class, "CheeseCow", 250, DeGeweldigeMod.DGMInstance, 80, 1, true, 0x917B1B, 0x8E814E);
-		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_arrow"), EntityCheeseArrow.class, "CheeseArrow", 251, DeGeweldigeMod.DGMInstance, 64, 1, true);
-		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_boss"), EntityCheeseBoss.class, "CheeseBoss", 252, DeGeweldigeMod.DGMInstance, 250, 5, true, 0x9E881E, 0x685503);
-		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_ball"), EntityCheeseBall.class, "Cheese", 253, DeGeweldigeMod.DGMInstance, 64, 1, true);
+		GameRegistry.registerTileEntity(TileEntityCheeseBoard.class, "CheeseBoard");
+		GameRegistry.registerTileEntity(TileEntityCheeseMirror.class, "CheeseMirror");
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_cow"), EntityCheeseCow.class, "CheeseCow", ID++, DeGeweldigeMod.DGMInstance, 80, 1, true, 0x917B1B, 0x8E814E);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_arrow"), EntityCheeseArrow.class, "CheeseArrow", ID++, DeGeweldigeMod.DGMInstance, 64, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_boss"), EntityCheeseBoss.class, "CheeseBoss", ID++, DeGeweldigeMod.DGMInstance, 250, 5, true, 0x9E881E, 0x685503);
+		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_ball"), EntityCheeseBall.class, "Cheese", ID++, DeGeweldigeMod.DGMInstance, 64, 1, true);
 	}
 	
 	public void addSpawn() {

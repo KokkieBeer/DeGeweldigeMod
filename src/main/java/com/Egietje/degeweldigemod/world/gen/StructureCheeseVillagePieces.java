@@ -18,7 +18,6 @@ import net.minecraft.block.BlockNewLog;
 import net.minecraft.block.BlockOldLog;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockSandStone;
-import net.minecraft.block.BlockStairs;
 import net.minecraft.block.BlockTorch;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -286,7 +285,7 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 12 - 1, 0);
 			}
 
-			IBlockState iblockstate = CheeseBlocks.CHEESE_STONE.getDefaultState();
+			IBlockState iblockstate = CheeseBlocks.CHEESE_BLOCK.getDefaultState();
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(
 					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
@@ -359,7 +358,7 @@ public class StructureCheeseVillagePieces {
 
 				if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn)
 						.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-					this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
+					this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
 				}
 			}
 
@@ -437,7 +436,7 @@ public class StructureCheeseVillagePieces {
 			}
 
 			if (!(this.cropTypeD instanceof BlockCrops)) {
-				this.cropTypeD = Blocks.BEETROOTS;
+				this.cropTypeD = CheeseBlocks.CHEESE_PLANT;
 			}
 		}
 
@@ -450,7 +449,7 @@ public class StructureCheeseVillagePieces {
 			case 3:
 				return Blocks.POTATOES;
 			case 4:
-				return Blocks.BEETROOTS;
+				return CheeseBlocks.CHEESE_PLANT;
 			default:
 				return Blocks.WHEAT;
 			}
@@ -484,26 +483,26 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 4 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 12, 4, 8, Blocks.AIR.getDefaultState(),
 					Blocks.AIR.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 2, 0, 7, Blocks.FARMLAND.getDefaultState(),
-					Blocks.FARMLAND.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 0, 1, 5, 0, 7, Blocks.FARMLAND.getDefaultState(),
-					Blocks.FARMLAND.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 0, 1, 8, 0, 7, Blocks.FARMLAND.getDefaultState(),
-					Blocks.FARMLAND.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 0, 1, 11, 0, 7, Blocks.FARMLAND.getDefaultState(),
-					Blocks.FARMLAND.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 2, 0, 7, CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(),
+					CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 0, 1, 5, 0, 7, CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(),
+					CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 0, 1, 8, 0, 7, CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(),
+					CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 10, 0, 1, 11, 0, 7, CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(),
+					CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(), false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 0, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 0, 0, 6, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 12, 0, 0, 12, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 0, 11, 0, 0, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 8, 11, 0, 8, iblockstate, iblockstate, false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, Blocks.WATER.getDefaultState(),
-					Blocks.WATER.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 0, 1, 9, 0, 7, Blocks.WATER.getDefaultState(),
-					Blocks.WATER.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, CheeseFluid.INSTANCE.getDefaultState(),
+					CheeseFluid.INSTANCE.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 0, 1, 9, 0, 7, CheeseFluid.INSTANCE.getDefaultState(),
+					CheeseFluid.INSTANCE.getDefaultState(), false);
 
 			for (int i = 1; i <= 7; ++i) {
 				int j = ((BlockCrops) this.cropTypeA).getMaxAge();
@@ -589,7 +588,7 @@ public class StructureCheeseVillagePieces {
 			case 3:
 				return Blocks.POTATOES;
 			case 4:
-				return Blocks.BEETROOTS;
+				return CheeseBlocks.CHEESE_PLANT;
 			default:
 				return Blocks.WHEAT;
 			}
@@ -623,19 +622,19 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 4 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 6, 4, 8, Blocks.AIR.getDefaultState(),
 					Blocks.AIR.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 2, 0, 7, Blocks.FARMLAND.getDefaultState(),
-					Blocks.FARMLAND.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 0, 1, 5, 0, 7, Blocks.FARMLAND.getDefaultState(),
-					Blocks.FARMLAND.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 2, 0, 7, CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(),
+					CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 4, 0, 1, 5, 0, 7, CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(),
+					CheeseBlocks.CHEESE_FARM_LAND.getDefaultState(), false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 0, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 0, 0, 6, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 0, 5, 0, 0, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 8, 5, 0, 8, iblockstate, iblockstate, false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, Blocks.WATER.getDefaultState(),
-					Blocks.WATER.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, CheeseFluid.INSTANCE.getDefaultState(),
+					CheeseFluid.INSTANCE.getDefaultState(), false);
 
 			for (int i = 1; i <= 7; ++i) {
 				int j = ((BlockCrops) this.cropTypeA).getMaxAge();
@@ -703,15 +702,15 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 7 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.SOUTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.SOUTH));
 			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.WEST));
-			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
-			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.WEST));
+			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
+			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			IBlockState iblockstate6 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 7, 4, 4, Blocks.AIR.getDefaultState(),
 					Blocks.AIR.getDefaultState(), false);
@@ -781,7 +780,7 @@ public class StructureCheeseVillagePieces {
 
 				if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn)
 						.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-					this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
+					this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
 				}
 			}
 
@@ -845,14 +844,14 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 9 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.SOUTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.SOUTH));
 			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.EAST));
-			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.EAST));
+			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
 			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(
 					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
 			IBlockState iblockstate6 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
@@ -928,7 +927,7 @@ public class StructureCheeseVillagePieces {
 
 				if (this.getBlockStateFromPos(worldIn, 1, -1, -1, structureBoundingBoxIn)
 						.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-					this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), 1, -1, -1, structureBoundingBoxIn);
+					this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), 1, -1, -1, structureBoundingBoxIn);
 				}
 			}
 
@@ -1005,15 +1004,15 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 6 - 1, 0);
 			}
 
-			IBlockState iblockstate = CheeseBlocks.CHEESE_STONE.getDefaultState();
+			IBlockState iblockstate = CheeseBlocks.CHEESE_BLOCK.getDefaultState();
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.WEST));
-			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.WEST));
+			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
 			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(
 					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
-			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			IBlockState iblockstate6 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 1, 0, 9, 4, 6, Blocks.AIR.getDefaultState(),
 					Blocks.AIR.getDefaultState(), false);
@@ -1035,8 +1034,8 @@ public class StructureCheeseVillagePieces {
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 5, 1, 0, 5, 3, 0, iblockstate6, iblockstate6, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 1, 0, 9, 3, 0, iblockstate6, iblockstate6, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 1, 4, 9, 4, 6, iblockstate, iblockstate, false);
-			this.setBlockState(worldIn, CheeseFluid.INSTANCE.getDefaultState(), 7, 1, 5, structureBoundingBoxIn);
-			this.setBlockState(worldIn, CheeseFluid.INSTANCE.getDefaultState(), 8, 1, 5, structureBoundingBoxIn);
+			this.setBlockState(worldIn, Blocks.FLOWING_LAVA.getDefaultState(), 7, 1, 5, structureBoundingBoxIn);
+			this.setBlockState(worldIn, Blocks.FLOWING_LAVA.getDefaultState(), 8, 1, 5, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.IRON_BARS.getDefaultState(), 9, 2, 5, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.IRON_BARS.getDefaultState(), 9, 2, 4, structureBoundingBoxIn);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 7, 2, 4, 8, 2, 5, Blocks.AIR.getDefaultState(),
@@ -1071,7 +1070,7 @@ public class StructureCheeseVillagePieces {
 
 					if (this.getBlockStateFromPos(worldIn, i, -1, -1, structureBoundingBoxIn)
 							.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-						this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), i, -1, -1, structureBoundingBoxIn);
+						this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), i, -1, -1, structureBoundingBoxIn);
 					}
 				}
 			}
@@ -1131,17 +1130,17 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 7 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.SOUTH));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.SOUTH));
 			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.EAST));
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.EAST));
 			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(
-					Blocks.OAK_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.WEST));
-			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
-			IBlockState iblockstate6 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.WEST));
+			IBlockState iblockstate5 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
+			IBlockState iblockstate6 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 7, 4, 4, Blocks.AIR.getDefaultState(),
 					Blocks.AIR.getDefaultState(), false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 2, 1, 6, 8, 4, 10, Blocks.AIR.getDefaultState(),
@@ -1241,7 +1240,7 @@ public class StructureCheeseVillagePieces {
 
 				if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn)
 						.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-					this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
+					this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
 				}
 			}
 
@@ -1320,11 +1319,11 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 6 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
-			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
 					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
-			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 0, 0, 4, 0, 4, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 0, 4, 0, 4, 4, 4, iblockstate3, iblockstate3, false);
@@ -1362,7 +1361,7 @@ public class StructureCheeseVillagePieces {
 
 				if (this.getBlockStateFromPos(worldIn, 2, -1, -1, structureBoundingBoxIn)
 						.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-					this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
+					this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), 2, -1, -1, structureBoundingBoxIn);
 				}
 			}
 
@@ -1549,7 +1548,7 @@ public class StructureCheeseVillagePieces {
 		 */
 		public boolean addComponentParts(World worldIn, Random randomIn, StructureBoundingBox structureBoundingBoxIn) {
 			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_GRASS_PATH.getDefaultState());
-			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(Blocks.GRAVEL.getDefaultState());
 			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
 
@@ -1567,7 +1566,7 @@ public class StructureCheeseVillagePieces {
 						while (blockpos.getY() >= worldIn.getSeaLevel() - 1) {
 							IBlockState iblockstate4 = worldIn.getBlockState(blockpos);
 
-							if (iblockstate4.getBlock() == CheeseBlocks.CHEESE_GRASS && worldIn.isAirBlock(blockpos.up())) {
+							if (iblockstate4.getBlock() == CheeseBlocks.CHEESE_STONE && worldIn.isAirBlock(blockpos.up())) {
 								worldIn.setBlockState(blockpos, iblockstate, 2);
 								break;
 							}
@@ -1913,95 +1912,11 @@ public class StructureCheeseVillagePieces {
 		}
 
 		protected IBlockState getBiomeSpecificBlockState(IBlockState blockstateIn) {
-			net.minecraftforge.event.terraingen.BiomeEvent.GetVillageBlockID event = new net.minecraftforge.event.terraingen.BiomeEvent.GetVillageBlockID(
-					startPiece == null ? null : startPiece.biome, blockstateIn);
-			net.minecraftforge.common.MinecraftForge.TERRAIN_GEN_BUS.post(event);
-			if (event.getResult() == net.minecraftforge.fml.common.eventhandler.Event.Result.DENY)
-				return event.getReplacement();
-			
-			if (this.structureType == 1) {
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_STONE) {
-					return Blocks.SANDSTONE.getDefaultState();
-				}
-
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_STONE) {
-					return Blocks.SANDSTONE.getStateFromMeta(BlockSandStone.EnumType.DEFAULT.getMetadata());
-				}
-
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_BLOCK) {
-					return Blocks.SANDSTONE.getStateFromMeta(BlockSandStone.EnumType.SMOOTH.getMetadata());
-				}
-
-				if (blockstateIn.getBlock() == Blocks.OAK_STAIRS) {
-					return Blocks.SANDSTONE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING,
-							blockstateIn.getValue(CheeseStairs.FACING));
-				}
-
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_STAIRS) {
-					return Blocks.SANDSTONE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING,
-							blockstateIn.getValue(CheeseStairs.FACING));
-				}
-
-				if (blockstateIn.getBlock() == Blocks.GRAVEL) {
-					return Blocks.SANDSTONE.getDefaultState();
-				}
-			} else if (this.structureType == 3) {
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_STONE) {
-					return CheeseBlocks.CHEESE_STONE.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.SPRUCE)
-							.withProperty(BlockLog.LOG_AXIS, blockstateIn.getValue(BlockLog.LOG_AXIS));
-				}
-
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_BLOCK) {
-					return CheeseBlocks.CHEESE_BLOCK.getDefaultState().withProperty(BlockPlanks.VARIANT,
-							BlockPlanks.EnumType.SPRUCE);
-				}
-
-				if (blockstateIn.getBlock() == Blocks.OAK_STAIRS) {
-					return Blocks.SPRUCE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING,
-							blockstateIn.getValue(CheeseStairs.FACING));
-				}
-
-				if (blockstateIn.getBlock() == Blocks.OAK_FENCE) {
-					return Blocks.SPRUCE_FENCE.getDefaultState();
-				}
-			} else if (this.structureType == 2) {
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_STONE ) {
-					return CheeseBlocks.CHEESE_STONE.getDefaultState().withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.ACACIA)
-							.withProperty(BlockLog.LOG_AXIS, blockstateIn.getValue(BlockLog.LOG_AXIS));
-				}
-
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_BLOCK) {
-					return CheeseBlocks.CHEESE_BLOCK.getDefaultState().withProperty(BlockPlanks.VARIANT,
-							BlockPlanks.EnumType.ACACIA);
-				}
-
-				if (blockstateIn.getBlock() == Blocks.OAK_STAIRS) {
-					return Blocks.ACACIA_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING,
-							blockstateIn.getValue(CheeseStairs.FACING));
-				}
-
-				if (blockstateIn.getBlock() == CheeseBlocks.CHEESE_STONE) {
-					return CheeseBlocks.CHEESE_STONE.getDefaultState().withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.ACACIA)
-							.withProperty(BlockLog.LOG_AXIS, BlockLog.EnumAxis.Y);
-				}
-
-				if (blockstateIn.getBlock() == Blocks.OAK_FENCE) {
-					return Blocks.ACACIA_FENCE.getDefaultState();
-				}
-			}
-
 			return blockstateIn;
 		}
 
 		protected BlockDoor biomeDoor() {
-			switch (this.structureType) {
-			case 2:
-				return Blocks.ACACIA_DOOR;
-			case 3:
-				return Blocks.SPRUCE_DOOR;
-			default:
-				return Blocks.OAK_DOOR;
-			}
+			return Blocks.OAK_DOOR;
 		}
 
 		protected void createVillageDoor(World p_189927_1_, StructureBoundingBox p_189927_2_, Random p_189927_3_,
@@ -2086,10 +2001,10 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 3, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 4, 12, 4, iblockstate,
-					Blocks.FLOWING_WATER.getDefaultState(), false);
+					CheeseFluid.INSTANCE.getDefaultState(), false);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 12, 2, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 3, 12, 2, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 12, 3, structureBoundingBoxIn);
@@ -2107,7 +2022,7 @@ public class StructureCheeseVillagePieces {
 			for (int i = 0; i <= 5; ++i) {
 				for (int j = 0; j <= 5; ++j) {
 					if (j == 0 || j == 5 || i == 0 || i == 5) {
-						this.setBlockState(worldIn, iblockstate, j, 11, i, structureBoundingBoxIn);
+						this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS_PATH.getDefaultState(), j, 11, i, structureBoundingBoxIn);
 						this.clearCurrentPositionBlocksUpwards(worldIn, j, 12, i, structureBoundingBoxIn);
 					}
 				}
@@ -2179,11 +2094,11 @@ public class StructureCheeseVillagePieces {
 				this.boundingBox.offset(0, this.averageGroundLvl - this.boundingBox.maxY + 6 - 1, 0);
 			}
 
-			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
-			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
+			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_PLANKS.getDefaultState());
 			IBlockState iblockstate2 = this.getBiomeSpecificBlockState(
 					CheeseBlocks.CHEESE_STAIRS.getDefaultState().withProperty(CheeseStairs.FACING, EnumFacing.NORTH));
-			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_STONE.getDefaultState());
+			IBlockState iblockstate3 = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_LOG.getStateFromMeta(1));
 			IBlockState iblockstate4 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 1, 1, 3, 5, 4, Blocks.AIR.getDefaultState(),
 					Blocks.AIR.getDefaultState(), false);
@@ -2237,7 +2152,7 @@ public class StructureCheeseVillagePieces {
 
 				if (this.getBlockStateFromPos(worldIn, 1, -1, -1, structureBoundingBoxIn)
 						.getBlock() == CheeseBlocks.CHEESE_GRASS_PATH) {
-					this.setBlockState(worldIn, CheeseBlocks.CHEESE_GRASS.getDefaultState(), 1, -1, -1, structureBoundingBoxIn);
+					this.setBlockState(worldIn, CheeseBlocks.CHEESE_STONE.getDefaultState(), 1, -1, -1, structureBoundingBoxIn);
 				}
 			}
 

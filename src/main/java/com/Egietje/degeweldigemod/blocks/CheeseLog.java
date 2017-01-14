@@ -14,8 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class CheeseLog extends BlockRotatedPillar {
-	public static final PropertyEnum<EnumAxis> LOG_AXIS = PropertyEnum.<EnumAxis>create("axis", EnumAxis.class);
-
 	public CheeseLog() {
 		super(Material.WOOD);
 		this.setSoundType(SoundType.WOOD);
@@ -46,7 +44,7 @@ public class CheeseLog extends BlockRotatedPillar {
 	 */
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
 			float hitZ, int meta, EntityLivingBase placer) {
-		return this.getStateFromMeta(meta).withProperty(LOG_AXIS, EnumAxis.fromFacingAxis(facing.getAxis()));
+		return this.getStateFromMeta(meta).withProperty(AXIS, facing.getAxis());
 	}
 
 	/**
@@ -58,11 +56,11 @@ public class CheeseLog extends BlockRotatedPillar {
 		case COUNTERCLOCKWISE_90:
 		case CLOCKWISE_90:
 
-			switch ((EnumAxis) state.getValue(LOG_AXIS)) {
+			switch ((EnumFacing.Axis) state.getValue(AXIS)) {
 			case X:
-				return state.withProperty(LOG_AXIS, EnumAxis.Z);
+				return state.withProperty(AXIS, EnumFacing.Axis.Z);
 			case Z:
-				return state.withProperty(LOG_AXIS, EnumAxis.X);
+				return state.withProperty(AXIS, EnumFacing.Axis.X);
 			default:
 				return state;
 			}
@@ -80,36 +78,5 @@ public class CheeseLog extends BlockRotatedPillar {
 	@Override
 	public boolean isWood(net.minecraft.world.IBlockAccess world, BlockPos pos) {
 		return true;
-	}
-
-	public static enum EnumAxis implements IStringSerializable {
-		X("x"), Y("y"), Z("z"), NONE("none");
-
-		private final String name;
-
-		private EnumAxis(String name) {
-			this.name = name;
-		}
-
-		public String toString() {
-			return this.name;
-		}
-
-		public static EnumAxis fromFacingAxis(EnumFacing.Axis axis) {
-			switch (axis) {
-			case X:
-				return X;
-			case Y:
-				return Y;
-			case Z:
-				return Z;
-			default:
-				return NONE;
-			}
-		}
-
-		public String getName() {
-			return this.name;
-		}
 	}
 }

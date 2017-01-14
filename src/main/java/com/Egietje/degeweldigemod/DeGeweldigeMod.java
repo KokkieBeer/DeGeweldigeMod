@@ -67,7 +67,7 @@ public class DeGeweldigeMod {
 	public static void init(FMLInitializationEvent event) {
 		new CheeseCraftingAndSmelting();
 		new CheeseCapabilitys();
-		proxy.registerTileEntities();
+		proxy.bindTileEntities();
 		proxy.registerClientEventHandler();
 		proxy.registerCommonEventHandler();
 		proxy.registerHandler(DGMInstance);

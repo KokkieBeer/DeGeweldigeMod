@@ -146,9 +146,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new RenderCheeseMirror());
 	}
 
-	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileEntityCheeseBoard.class, Reference.MODID + "TileEntityCheeseBoard");
-		GameRegistry.registerTileEntity(TileEntityCheeseMirror.class, Reference.MODID + "TileEntityMirror");
+	public void bindTileEntities() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCheeseBoard.class, new RenderCheeseBoard());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCheeseMirror.class, new RenderCheeseMirror());
 	}

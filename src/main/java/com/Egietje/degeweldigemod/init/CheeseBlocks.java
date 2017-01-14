@@ -73,9 +73,9 @@ public class CheeseBlocks {
 		CHEESE_GRASS_PATH = new CheeseGrassPath().setHardness(0.625F).setResistance(0.5F);
 		CHEESE_FARM_LAND = new CheeseFarmLand().setHardness(0.625F).setResistance(0.5F);
 		CHEESE_STAIRS = new CheeseStairs().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(2.5F);
-		CHEESE_PORTAL = (CheesePortal) new CheesePortal().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(4.5F);
+		CHEESE_PORTAL = (CheesePortal) new CheesePortal().setBlockUnbreakable();
 		CHEESE_STONE = new CheeseStone().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.0F);
-		CHEESE_FIRE = (CheeseFire) new CheeseFire().setHardness(0.0F);
+		CHEESE_FIRE = (CheeseFire) new CheeseFire().setHardness(0.0F).setLightLevel(15.0F);
 		CHEESE_MIRROR = new CheeseMirror().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.5F);
 		CHEESE_LOG = new CheeseLog().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(2.0F);
 		CHEESE_PLANKS = new CheesePlanks().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.25F);

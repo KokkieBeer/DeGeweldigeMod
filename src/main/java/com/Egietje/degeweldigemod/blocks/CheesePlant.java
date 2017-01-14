@@ -15,6 +15,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
 
 public class CheesePlant extends BlockCrops {
 	@Override
@@ -25,5 +26,10 @@ public class CheesePlant extends BlockCrops {
 	@Override
 	protected Item getCrop() {
 		return CheeseItems.CHEESE;
+	}
+
+	@Override
+	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) {
+		return EnumPlantType.Crop;
 	}
 }
