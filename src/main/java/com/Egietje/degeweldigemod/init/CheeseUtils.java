@@ -2,11 +2,16 @@ package com.Egietje.degeweldigemod.init;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.List;
+
+import com.Egietje.degeweldigemod.entities.EntityCheeseMountable;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.world.World;
 
 public class CheeseUtils {
 
@@ -80,6 +85,42 @@ public class CheeseUtils {
 			break;
 		}
 		return new double[] { var1, var2, var3, var4 };
+	}
+	
+	public static class Mountable {
+
+		public static boolean sitOnBlock(World worldIn, int x, int y, int z, EntityPlayer playerIn, double d) {
+			if (!checkForExistingEntity(worldIn, x,y,z,playerIn)) {
+				EntityCheeseMountable entity = new EntityCheeseMountable(worldIn, x, y, z, d);
+				worldIn.spawnEntity(entity);
+				playerIn.startRiding(entity);
+			}
+			return true;
+		}
+
+		public static boolean checkForExistingEntity(World worldIn, int x, int y, int z, EntityPlayer playerIn) {
+			List<EntityCheeseMountable> list = worldIn.getEntitiesWithinAABB(EntityCheeseMountable.class, new AxisAlignedBB(x, y, z, x + 1.0,  y+1.0, z+1.0).expand(1, 1, 1));
+			for (EntityCheeseMountable entity : list) {
+				if (entity.posX == x && entity.posY == y && entity.posZ == z) {
+					if(entity.isBeingRidden()) {
+						playerIn.startRiding(entity);
+					}
+					return true;
+				}
+			}
+			return false;
+		}
+
+		public static boolean isSomeoneSitting(World worldIn, int x, int y, int z) {
+			List<EntityCheeseMountable> list = worldIn.getEntitiesWithinAABB(EntityCheeseMountable.class, new AxisAlignedBB(x, y, z, x + 1.0,  y+1.0, z+1.0));
+			for (EntityCheeseMountable entity : list) {
+				if (entity.posX == x && entity.posY == y && entity.posZ == z) {
+					return entity.isBeingRidden();
+				}
+			}
+			return false;
+		}
+		
 	}
 	
 	public static class CheeseMath {

@@ -48,6 +48,8 @@ public class CheeseBlocks {
 	public static Block CHEESE_MIRROR;
 	public static Block CHEESE_LOG;
 	public static Block CHEESE_PLANKS;
+	public static Block CHEESE_CHAIR;
+	public static Block CHEESE_HEAD;
 	
 	public CheeseBlocks() {
 		init();
@@ -79,6 +81,8 @@ public class CheeseBlocks {
 		CHEESE_MIRROR = new CheeseMirror().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.5F);
 		CHEESE_LOG = new CheeseLog().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(2.0F);
 		CHEESE_PLANKS = new CheesePlanks().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.25F);
+		CHEESE_CHAIR = new CheeseChair().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.25F);
+		CHEESE_HEAD = new CheeseHead().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(2F);
 		
 		CheeseUtils.setNames(CHEESE_ORE, "cheese_ore");
 		CheeseUtils.setNames(CHEESE_ORE_NETHER, "cheese_ore_nether");
@@ -104,6 +108,8 @@ public class CheeseBlocks {
 		CheeseUtils.setNames(CHEESE_MIRROR, "cheese_mirror");
 		CheeseUtils.setNames(CHEESE_LOG, "cheese_log");
 		CheeseUtils.setNames(CHEESE_PLANKS, "cheese_planks");
+		CheeseUtils.setNames(CHEESE_CHAIR, "cheese_chair");
+		CheeseUtils.setNames(CHEESE_HEAD, "cheese_head");
 	}	
 	
 	public void register() {
@@ -130,9 +136,12 @@ public class CheeseBlocks {
 		this.registerBlock(CHEESE_FIRE);
 		this.registerBlock(CHEESE_MIRROR);
 		FluidRegistry.registerFluid(CheeseFluid2.INSTANCE);
+		FluidRegistry.addBucketForFluid(CheeseFluid2.INSTANCE);
 		this.registerBlock(CheeseFluid.INSTANCE);
 		this.registerBlock(CHEESE_LOG);
 		this.registerBlock(CHEESE_PLANKS);
+		this.registerBlock(CHEESE_CHAIR);
+		this.registerBlock(CHEESE_HEAD);
 	}	
 	
 	private void registerBlock(Block block) {

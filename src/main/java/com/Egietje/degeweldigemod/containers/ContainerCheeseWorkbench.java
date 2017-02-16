@@ -6,7 +6,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ContainerWorkbench;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
@@ -19,7 +18,7 @@ import net.minecraft.world.World;
 
 public class ContainerCheeseWorkbench extends Container {
 	/** The crafting matrix inventory (3x3). */
-	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
 	public IInventory craftResult = new InventoryCraftResult();
 	private final World worldObj;
 	/** Position of the workbench */
@@ -65,7 +64,7 @@ public class ContainerCheeseWorkbench extends Container {
 		super.onContainerClosed(playerIn);
 
 		if (!this.worldObj.isRemote) {
-			for (int i = 0; i < 9; ++i) {
+			for (int i = 0; i < 16; ++i) {
 				ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
 
 				if (!itemstack.isEmpty()) {
@@ -124,7 +123,7 @@ public class ContainerCheeseWorkbench extends Container {
 			if (itemstack1.getCount() == itemstack.getCount()) {
 				return ItemStack.EMPTY;
 			}
-			
+
 			ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
 
 			if (index == 0) {

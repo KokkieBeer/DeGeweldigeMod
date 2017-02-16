@@ -24,8 +24,8 @@ import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CheeseItems {
+	//Materials
 	public static ToolMaterial CHEESE_TOOL_MATERIAL;
-	
 	public static ArmorMaterial CHEESE_ARMOR_MATERIAL;
 	
 	//Tools
@@ -66,6 +66,7 @@ public class CheeseItems {
 	//Other
 	public static Item CHEESE_INGOT;
 	public static Item CHEESE_ARROW;
+	public static Item CHEESE_HEAD;
 	
 	public CheeseItems() {
 		init();

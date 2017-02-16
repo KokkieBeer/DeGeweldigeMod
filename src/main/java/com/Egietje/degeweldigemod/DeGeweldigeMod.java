@@ -51,7 +51,7 @@ public class DeGeweldigeMod {
 	public void preInit(FMLPreInitializationEvent event) {
 		new CheeseBlocks();
 		new CheeseItems();
-		new CheeseMobs();
+		new CheeseEntities();
 		new CheeseAchievements();
 		new CheeseSpawnPlacementRegistry();
 		new CheeseBiomes();

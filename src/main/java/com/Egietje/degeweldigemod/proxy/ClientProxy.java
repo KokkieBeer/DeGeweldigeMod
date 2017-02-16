@@ -125,6 +125,7 @@ public class ClientProxy extends CommonProxy {
 		registerBlockModel(CheeseBlocks.CHEESE_MIRROR, 0);
 		registerBlockModel(CheeseBlocks.CHEESE_LOG, 0);
 		registerBlockModel(CheeseBlocks.CHEESE_PLANKS, 0);
+		registerBlockModel(CheeseBlocks.CHEESE_CHAIR, 0);
 
 		//Fluids
 		final Item MOLTEN_CHEESE = Item.getItemFromBlock(CheeseFluid.INSTANCE);

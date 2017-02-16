@@ -22,11 +22,13 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
@@ -36,7 +38,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class CheeseClientHandler {
-
 	@SubscribeEvent
 	public void onPlayerJoin(PlayerLoggedInEvent event) {
 		EntityPlayer player = event.player;
@@ -45,9 +46,14 @@ public class CheeseClientHandler {
 		player.addStat(CheeseAchievements.JOIN);
 	}
 
+	private boolean air = false;
+	
 	@SubscribeEvent
 	public void onPostRenderOverlay(RenderGameOverlayEvent.Post event) {
-		if (event.getType() == ElementType.FOOD && event.getType() != ElementType.AIR) {
+		if (event.getType() == ElementType.AIR) {
+			
+		}
+		if (event.getType() == ElementType.FOOD) {
 			(new GuiCheeseOverlay(Minecraft.getMinecraft())).renderCheese(event.getResolution().getScaledWidth(),
 					event.getResolution().getScaledHeight());
 		}

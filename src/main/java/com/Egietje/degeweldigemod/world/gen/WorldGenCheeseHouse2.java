@@ -46,7 +46,7 @@ public class WorldGenCheeseHouse2 extends WorldGenerator {
         MinecraftServer minecraftserver = worldIn.getMinecraftServer();
 		TemplateManager templatemanager = worldIn.getSaveHandler().getStructureTemplateManager();
         Template template = templatemanager.getTemplate(minecraftserver, HOUSE);
-        template.addBlocksToWorld(worldIn, position, placementsettings, 2);
+        template.addBlocksToWorld(worldIn, position, placementsettings, 3);
 		return true;
 	}
 

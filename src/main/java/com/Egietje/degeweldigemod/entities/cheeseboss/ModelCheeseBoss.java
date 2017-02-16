@@ -7,22 +7,22 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
 public class ModelCheeseBoss extends ModelBase {
-	ModelRenderer Body;
+	ModelRenderer body;
 	ModelRenderer rightLeg;
 	ModelRenderer leftLeg;
 	ModelRenderer rightArm;
 	ModelRenderer leftArm;
-	ModelRenderer Head;
+	ModelRenderer head;
 
 	public ModelCheeseBoss() {
 		textureWidth = 128;
 		textureHeight = 64;
 
-		Body = new ModelRenderer(this, 0, 0);
-		Body.addBox(-15F, -20F, -10F, 30, 40, 20);
-		Body.setRotationPoint(0F, -15F, 0F);
-		Body.setTextureSize(128, 64);
-		Body.mirror = true;
+		body = new ModelRenderer(this, 0, 0);
+		body.addBox(-15F, -20F, -10F, 30, 40, 20);
+		body.setRotationPoint(0F, -15F, 0F);
+		body.setTextureSize(128, 64);
+		body.mirror = true;
 		rightLeg = new ModelRenderer(this, 100, 20);
 		rightLeg.addBox(-1F, 0F, -1F, 2, 19, 2);
 		rightLeg.setRotationPoint(-10F, 5F, 0F);
@@ -43,18 +43,18 @@ public class ModelCheeseBoss extends ModelBase {
 		leftArm.setRotationPoint(15F, -26F, 0F);
 		leftArm.setTextureSize(128, 64);
 		leftArm.mirror = true;
-		Head = new ModelRenderer(this, 80, 0);
-		Head.addBox(-5F, -10F, -5F, 10, 10, 10);
-		Head.setRotationPoint(0F, -35F, 0F);
-		Head.setTextureSize(128, 64);
-		Head.mirror = true;
+		head = new ModelRenderer(this, 80, 0);
+		head.addBox(-5F, -10F, -5F, 10, 10, 10);
+		head.setRotationPoint(0F, -35F, 0F);
+		head.setTextureSize(128, 64);
+		head.mirror = true;
 	}
 
 	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale)
     {
         this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
-            this.Head.render(scale);
-            this.Body.render(scale);
+            this.head.render(scale);
+            this.body.render(scale);
             this.leftLeg.render(scale);
             this.rightLeg.render(scale);
             this.leftArm.render(scale);
@@ -68,9 +68,9 @@ public class ModelCheeseBoss extends ModelBase {
      */
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
     {
-        this.Head.rotateAngleX = headPitch * 0.017453292F;
-        this.Head.rotateAngleY = netHeadYaw * 0.017453292F;
-        this.Body.rotateAngleX = ((float)Math.PI / 1F);
+        this.head.rotateAngleX = headPitch * 0.017453292F;
+        this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+        this.body.rotateAngleX = ((float)Math.PI / 1F);
         this.leftLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.rightLeg.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
         this.leftArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;

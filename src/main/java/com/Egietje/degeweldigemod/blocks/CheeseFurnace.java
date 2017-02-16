@@ -143,15 +143,17 @@ public class CheeseFurnace extends BlockContainer {
 		keepInventory = true;
 
 		if (active) {
-			worldIn.setBlockState(pos,
-					CheeseBlocks.LIT_CHEESE_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-			worldIn.setBlockState(pos,
-					CheeseBlocks.LIT_CHEESE_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+			worldIn.setBlockState(pos, CheeseBlocks.LIT_CHEESE_FURNACE.getDefaultState().withProperty(FACING,
+					iblockstate.getValue(FACING)), 3);
+			worldIn.setBlockState(pos, CheeseBlocks.LIT_CHEESE_FURNACE.getDefaultState().withProperty(FACING,
+					iblockstate.getValue(FACING)), 3);
 		} else {
 			worldIn.setBlockState(pos,
-					CheeseBlocks.CHEESE_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+					CheeseBlocks.CHEESE_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)),
+					3);
 			worldIn.setBlockState(pos,
-					CheeseBlocks.CHEESE_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+					CheeseBlocks.CHEESE_FURNACE.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)),
+					3);
 		}
 
 		keepInventory = false;
@@ -162,21 +164,17 @@ public class CheeseFurnace extends BlockContainer {
 		}
 	}
 
+	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY,
+			float hitZ, int meta, EntityLivingBase placer) {
+		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+	}
+
 	/**
 	 * Returns a new instance of a block's tile entity class. Called on placing
 	 * the block.
 	 */
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TileEntityFurnace();
-	}
-
-	/**
-	 * Called by ItemBlocks just before a block is actually set in the world, to
-	 * allow for adjustments to the IBlockstate
-	 */
-	public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ,
-			int meta, EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
 	}
 
 	/**
