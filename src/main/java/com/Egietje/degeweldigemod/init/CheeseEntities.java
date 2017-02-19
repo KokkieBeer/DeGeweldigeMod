@@ -10,7 +10,6 @@ import com.Egietje.degeweldigemod.entities.cheesecow.EntityCheeseCow;
 import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseBoard;
 import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseFurnace;
 import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseMirror;
-import com.Egietje.degeweldigemod.entities.tileentities.blocks.TileEntityCheeseSkull;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 
@@ -35,7 +34,6 @@ public class CheeseEntities {
 		GameRegistry.registerTileEntity(TileEntityCheeseFurnace.class, "CheeseFurnace");
 		GameRegistry.registerTileEntity(TileEntityCheeseBoard.class, "CheeseBoard");
 		GameRegistry.registerTileEntity(TileEntityCheeseMirror.class, "CheeseMirror");
-		GameRegistry.registerTileEntity(TileEntityCheeseSkull.class, "CheeseSkull");
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_cow"), EntityCheeseCow.class, "CheeseCow", ID++, DeGeweldigeMod.DGMInstance, 80, 1, true, 0x917B1B, 0x8E814E);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_arrow"), EntityCheeseArrow.class, "CheeseArrow", ID++, DeGeweldigeMod.DGMInstance, 64, 1, true);
 		EntityRegistry.registerModEntity(new ResourceLocation(Reference.MODID + ":cheese_boss"), EntityCheeseBoss.class, "CheeseBoss", ID++, DeGeweldigeMod.DGMInstance, 250, 5, true, 0x9E881E, 0x685503);

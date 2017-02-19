@@ -7,9 +7,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class CheeseGuiHandler implements IGuiHandler {
-	
+
 	public static int COOKIEGUIID = 0;
 	public static int COMPLIMENTGUIID = 1;
+	public static int BANKID = 2;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
@@ -18,11 +19,15 @@ public class CheeseGuiHandler implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		if(ID == COOKIEGUIID) {
+		if (ID == COOKIEGUIID) {
 			return new CheeseCookieGui(player);
-		} else if(ID == COMPLIMENTGUIID) {
+		} else if (ID == COMPLIMENTGUIID) {
 			return new ComplimentMachineGui();
-		} else return null;
+		} else if (ID == BANKID) {
+			return new CheeseBankGui();
+		} else {
+			return null;
+		}
 	}
 
 }

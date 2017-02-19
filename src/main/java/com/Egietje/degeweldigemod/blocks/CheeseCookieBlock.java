@@ -17,15 +17,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class CheeseCookieBlock extends Block {
-	public static EntityPlayer player;
-
 	public CheeseCookieBlock() {
 		super(Material.ROCK);
 	}
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing heldItem, float hitX, float hitY, float hitZ) {
-		player = playerIn;
 		playerIn.openGui(DeGeweldigeMod.DGMInstance, CheeseGuiHandler.COOKIEGUIID, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, hitX, hitY, hitZ);
 	}

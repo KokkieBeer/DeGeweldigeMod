@@ -3,6 +3,7 @@ package com.Egietje.degeweldigemod.handler;
 import com.Egietje.degeweldigemod.Reference;
 import com.Egietje.degeweldigemod.capability.cheese.CheeseProvider;
 import com.Egietje.degeweldigemod.capability.haditems.HadItemsProvider;
+import com.Egietje.degeweldigemod.capability.money.MoneyProvider;
 import com.Egietje.degeweldigemod.capability.shouldgiveitems.ShouldGiveItemsProvider;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,6 +18,7 @@ public class CheeseCapabilityHandler {
 		if(event.getEntity() instanceof EntityPlayer) {
 			event.addCapability(new ResourceLocation(Reference.MODID + ":had_items"), new HadItemsProvider());
 			event.addCapability(new ResourceLocation(Reference.MODID + ":cheese"), new CheeseProvider());
+			event.addCapability(new ResourceLocation(Reference.MODID + ":money"), new MoneyProvider());
 		}
 	}
 	

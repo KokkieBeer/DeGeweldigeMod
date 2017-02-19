@@ -66,7 +66,7 @@ public class CheeseItems {
 	//Other
 	public static Item CHEESE_INGOT;
 	public static Item CHEESE_ARROW;
-	public static Item CHEESE_HEAD;
+	public static Item CHEESE_MONEY;
 	
 	public CheeseItems() {
 		init();
@@ -116,6 +116,8 @@ public class CheeseItems {
 		//Other
 		CHEESE_INGOT = new Item().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
 		CHEESE_ARROW = new CheeseArrow().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		CHEESE_MONEY = new Item().setCreativeTab(CheeseTabs.CHEESE_ITEMS);
+		
 		
 		//Food
 		CheeseUtils.setNames(CHEESE, "cheese");
@@ -128,6 +130,7 @@ public class CheeseItems {
 		//Other
 		CheeseUtils.setNames(CHEESE_INGOT, "cheese_ingot");
 		CheeseUtils.setNames(CHEESE_ARROW, "cheese_arrow");
+		CheeseUtils.setNames(CHEESE_MONEY, "cheese_money");
 		
 		//Tool heads
 		CheeseUtils.setNames(CHEESE_PICKAXE_HEAD, "cheese_pickaxe_head");
@@ -196,5 +199,6 @@ public class CheeseItems {
 		//Other
 		GameRegistry.register(CHEESE_INGOT);
 		GameRegistry.register(CHEESE_ARROW);
+		GameRegistry.register(CHEESE_MONEY);
 	}
 }

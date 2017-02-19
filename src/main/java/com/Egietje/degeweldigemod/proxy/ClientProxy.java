@@ -62,70 +62,74 @@ import net.minecraftforge.fml.relauncher.Side;
 public class ClientProxy extends CommonProxy {
 
 	public void registerModels() {
+		int meta = 0;
+		
 		//Food
-		registerItemModel(CheeseItems.CHEESE, 0);
-		registerItemModel(CheeseItems.CHEESE_COOKED, 0);
-		registerItemModel(CheeseItems.BREAD_CHEESE, 0);
-		registerItemModel(CheeseItems.CHEESE_APPLE, 0);
-		registerItemModel(CheeseItems.CHEESE_BUCKET, 0);
-		registerItemModel(CheeseItems.CHEESE_SEEDS, 0);
+		registerItemModel(CheeseItems.CHEESE, meta);
+		registerItemModel(CheeseItems.CHEESE_COOKED, meta);
+		registerItemModel(CheeseItems.BREAD_CHEESE, meta);
+		registerItemModel(CheeseItems.CHEESE_APPLE, meta);
+		registerItemModel(CheeseItems.CHEESE_BUCKET, meta);
+		registerItemModel(CheeseItems.CHEESE_SEEDS, meta);
 
 		//Other
-		registerItemModel(CheeseItems.CHEESE_INGOT, 0);
-		registerItemModel(CheeseItems.CHEESE_ARROW, 0);
+		registerItemModel(CheeseItems.CHEESE_INGOT, meta);
+		registerItemModel(CheeseItems.CHEESE_ARROW, meta);
+		registerItemModel(CheeseItems.CHEESE_MONEY, meta);
 
 		//Tools
-		registerItemModel(CheeseItems.CHEESE_SWORD, 0);
-		registerItemModel(CheeseItems.CHEESE_PICKAXE, 0);
-		registerItemModel(CheeseItems.CHEESE_AXE, 0);
-		registerItemModel(CheeseItems.CHEESE_SHOVEL, 0);
-		registerItemModel(CheeseItems.CHEESE_HOE, 0);
-		registerItemModel(CheeseItems.CHEESE_FLY_STICK, 0);
-		registerItemModel(CheeseItems.CHEESE_BOW, 0);
-		registerItemModel(CheeseItems.CHEESE_MULTITOOL, 0);
-		registerItemModel(CheeseItems.FLINT_AND_CHEESE, 0);
-		registerItemModel(CheeseItems.CHEESE_SLOW_WAND, 0);
-		registerItemModel(CheeseItems.CHEESE_POISON_WAND, 0);
-		registerItemModel(CheeseItems.CHEESE_DAMAGE_WAND, 0);
-		registerItemModel(CheeseItems.CHEESE_FIRE_WAND, 0);
-		registerItemModel(CheeseItems.CHEESE_WAND, 0);
+		registerItemModel(CheeseItems.CHEESE_SWORD, meta);
+		registerItemModel(CheeseItems.CHEESE_PICKAXE, meta);
+		registerItemModel(CheeseItems.CHEESE_AXE, meta);
+		registerItemModel(CheeseItems.CHEESE_SHOVEL, meta);
+		registerItemModel(CheeseItems.CHEESE_HOE, meta);
+		registerItemModel(CheeseItems.CHEESE_FLY_STICK, meta);
+		registerItemModel(CheeseItems.CHEESE_BOW, meta);
+		registerItemModel(CheeseItems.CHEESE_MULTITOOL, meta);
+		registerItemModel(CheeseItems.FLINT_AND_CHEESE, meta);
+		registerItemModel(CheeseItems.CHEESE_SLOW_WAND, meta);
+		registerItemModel(CheeseItems.CHEESE_POISON_WAND, meta);
+		registerItemModel(CheeseItems.CHEESE_DAMAGE_WAND, meta);
+		registerItemModel(CheeseItems.CHEESE_FIRE_WAND, meta);
+		registerItemModel(CheeseItems.CHEESE_WAND, meta);
 
 		//Armor
-		registerItemModel(CheeseItems.CHEESE_HELMET, 0);
-		registerItemModel(CheeseItems.CHEESE_CHESTPLATE, 0);
-		registerItemModel(CheeseItems.CHEESE_LEGGINGS, 0);
-		registerItemModel(CheeseItems.CHEESE_BOOTS, 0);
+		registerItemModel(CheeseItems.CHEESE_HELMET, meta);
+		registerItemModel(CheeseItems.CHEESE_CHESTPLATE, meta);
+		registerItemModel(CheeseItems.CHEESE_LEGGINGS, meta);
+		registerItemModel(CheeseItems.CHEESE_BOOTS, meta);
 
 		//Tool heads
-		registerItemModel(CheeseItems.CHEESE_PICKAXE_HEAD, 0);
-		registerItemModel(CheeseItems.CHEESE_AXE_HEAD, 0);
-		registerItemModel(CheeseItems.CHEESE_SHOVEL_HEAD, 0);
+		registerItemModel(CheeseItems.CHEESE_PICKAXE_HEAD, meta);
+		registerItemModel(CheeseItems.CHEESE_AXE_HEAD, meta);
+		registerItemModel(CheeseItems.CHEESE_SHOVEL_HEAD, meta);
 
-		registerBlockModel(CheeseBlocks.CHEESE_ORE, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_ORE_NETHER, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_ORE_END, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_BLOCK, 0);
-		registerBlockModel(CheeseBlocks.QUICK_CHEESE, 0);
-		registerBlockModel(CheeseBlocks.COMPLIMENT_MACHINE, 0);
-		registerBlockModel(CheeseBlocks.BELGIUM_FLAG, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_PLANT, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_FURNACE, 0);
-		registerBlockModel(CheeseBlocks.LIT_CHEESE_FURNACE, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_CRAFTING_TABLE, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_COOKIE_BLOCK, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_BOARD, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_GRASS, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_DIRT, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_GRASS_PATH, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_FARM_LAND, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_STAIRS, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_PORTAL, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_STONE, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_FIRE, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_MIRROR, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_LOG, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_PLANKS, 0);
-		registerBlockModel(CheeseBlocks.CHEESE_CHAIR, 0);
+		registerBlockModel(CheeseBlocks.CHEESE_ORE, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_ORE_NETHER, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_ORE_END, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_BLOCK, meta);
+		registerBlockModel(CheeseBlocks.QUICK_CHEESE, meta);
+		registerBlockModel(CheeseBlocks.COMPLIMENT_MACHINE, meta);
+		registerBlockModel(CheeseBlocks.BELGIUM_FLAG, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_PLANT, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_FURNACE, meta);
+		registerBlockModel(CheeseBlocks.LIT_CHEESE_FURNACE, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_CRAFTING_TABLE, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_COOKIE_BLOCK, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_BOARD, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_GRASS, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_DIRT, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_GRASS_PATH, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_FARM_LAND, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_STAIRS, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_PORTAL, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_STONE, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_FIRE, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_MIRROR, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_LOG, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_PLANKS, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_CHAIR, meta);
+		registerBlockModel(CheeseBlocks.CHEESE_BANK, meta);
 
 		//Fluids
 		final Item MOLTEN_CHEESE = Item.getItemFromBlock(CheeseFluid.INSTANCE);

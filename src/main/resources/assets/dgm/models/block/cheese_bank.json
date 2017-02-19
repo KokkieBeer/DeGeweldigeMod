@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "dgm:blocks/cheese_bank_side",
+        "down": "dgm:blocks/cheese_bank_bottom",
+        "up": "dgm:blocks/cheese_bank_top",
+        "north": "dgm:blocks/cheese_bank_side",
+        "east": "dgm:blocks/cheese_bank_side",
+        "south": "dgm:blocks/cheese_bank_side",
+        "west": "dgm:blocks/cheese_bank_side"
+    }
+}

@@ -7,6 +7,7 @@ item.cheese_seeds.name=§eCheese Seeds§r
 
 item.cheese_ingot.name=§eCheese Ingot§r
 item.cheese_arrow.name=§eCheese Arrow§r
+item.cheese_money.name=§eCheese Money§r
 
 item.cheese_helmet.name=§eCheese Helmet§r
 item.cheese_chestplate.name=§eCheese Chestplate§r
@@ -60,6 +61,7 @@ tile.cheese_mirror.name=§eCheese Mirror§r
 tile.cheese_log.name=§eCheese Log§r
 tile.cheese_planks.name=§eCheese Planks§r
 tile.cheese_chair.name=§eCheese Chair§r
+tile.cheese_bank.name=§eCheese Bank§r
 
 achievement.join=§eJoined§r
 achievement.join.desc=§6Join the world!§r

@@ -30,6 +30,7 @@ public class CheeseCookieGui extends GuiScreen {
 	}
 	
 	public CheeseCookieGui(EntityPlayer playerIn) {
+		if (playerIn != null)
 		player = playerIn;
 	}
 	

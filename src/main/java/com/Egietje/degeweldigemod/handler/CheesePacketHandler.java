@@ -31,5 +31,6 @@ public class CheesePacketHandler {
 		INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("dgmChannel");
 		INSTANCE.registerMessage(CheeseMessageHandler.class, CheeseMessage.class, ID++, Side.SERVER);
 		INSTANCE.registerMessage(CheeseFillMessageHandler.class, CheeseFillMessage.class, ID++, Side.CLIENT);
+		INSTANCE.registerMessage(CheeseBankMessageHandler.class, CheeseBankMessage.class, ID++, Side.SERVER);
 	}
 }

@@ -56,7 +56,7 @@ public class CheeseChair extends Block {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if (!CheeseUtils.Mountable.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 8 / 16D)) {
+		if (CheeseUtils.Mountable.sitOnBlock(worldIn, pos.getX(), pos.getY(), pos.getZ(), playerIn, 8 / 16D)) {
 			worldIn.updateComparatorOutputLevel(pos, this);
 			return true;
 		}
