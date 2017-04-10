@@ -1,6 +1,5 @@
 package com.Egietje.degeweldigemod.world.gen;
 
-import com.Egietje.degeweldigemod.blocks.CheeseFluid;
 import com.Egietje.degeweldigemod.blocks.CheeseStairs;
 import com.Egietje.degeweldigemod.entities.LootTables;
 import com.Egietje.degeweldigemod.init.CheeseBlocks;
@@ -499,10 +498,10 @@ public class StructureCheeseVillagePieces {
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 12, 0, 0, 12, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 0, 11, 0, 0, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 8, 11, 0, 8, iblockstate, iblockstate, false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, CheeseFluid.INSTANCE.getDefaultState(),
-					CheeseFluid.INSTANCE.getDefaultState(), false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 0, 1, 9, 0, 7, CheeseFluid.INSTANCE.getDefaultState(),
-					CheeseFluid.INSTANCE.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, Blocks.WATER.getDefaultState(),
+					Blocks.WATER.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 9, 0, 1, 9, 0, 7, Blocks.WATER.getDefaultState(),
+					Blocks.WATER.getDefaultState(), false);
 
 			for (int i = 1; i <= 7; ++i) {
 				int j = ((BlockCrops) this.cropTypeA).getMaxAge();
@@ -633,8 +632,8 @@ public class StructureCheeseVillagePieces {
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 6, 0, 0, 6, 0, 8, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 0, 5, 0, 0, iblockstate, iblockstate, false);
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 8, 5, 0, 8, iblockstate, iblockstate, false);
-			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, CheeseFluid.INSTANCE.getDefaultState(),
-					CheeseFluid.INSTANCE.getDefaultState(), false);
+			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 3, 0, 1, 3, 0, 7, Blocks.WATER.getDefaultState(),
+					Blocks.WATER.getDefaultState(), false);
 
 			for (int i = 1; i <= 7; ++i) {
 				int j = ((BlockCrops) this.cropTypeA).getMaxAge();
@@ -2004,7 +2003,7 @@ public class StructureCheeseVillagePieces {
 			IBlockState iblockstate = this.getBiomeSpecificBlockState(CheeseBlocks.CHEESE_BLOCK.getDefaultState());
 			IBlockState iblockstate1 = this.getBiomeSpecificBlockState(Blocks.OAK_FENCE.getDefaultState());
 			this.fillWithBlocks(worldIn, structureBoundingBoxIn, 1, 0, 1, 4, 12, 4, iblockstate,
-					CheeseFluid.INSTANCE.getDefaultState(), false);
+					Blocks.WATER.getDefaultState(), false);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 12, 2, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 3, 12, 2, structureBoundingBoxIn);
 			this.setBlockState(worldIn, Blocks.AIR.getDefaultState(), 2, 12, 3, structureBoundingBoxIn);

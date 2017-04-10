@@ -62,6 +62,7 @@ tile.cheese_log.name=§eCheese Log§r
 tile.cheese_planks.name=§eCheese Planks§r
 tile.cheese_chair.name=§eCheese Chair§r
 tile.cheese_bank.name=§eCheese Bank§r
+tile.cheese_store.name=§eCheese Store§r
 
 achievement.join=§eJoined§r
 achievement.join.desc=§6Join the world!§r

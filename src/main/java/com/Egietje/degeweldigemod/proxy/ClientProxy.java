@@ -12,12 +12,9 @@ import org.lwjgl.opengl.Display;
 
 import com.Egietje.degeweldigemod.DeGeweldigeMod;
 import com.Egietje.degeweldigemod.Reference;
-import com.Egietje.degeweldigemod.blocks.CheeseFluid;
 import com.Egietje.degeweldigemod.entities.cheesearrow.*;
-import com.Egietje.degeweldigemod.entities.cheeseball.EntityCheeseBall;
-import com.Egietje.degeweldigemod.entities.cheeseball.RenderingHandlerCheeseBall;
-import com.Egietje.degeweldigemod.entities.cheeseboss.EntityCheeseBoss;
-import com.Egietje.degeweldigemod.entities.cheeseboss.RenderingHandlerCheeseBoss;
+import com.Egietje.degeweldigemod.entities.cheeseball.*;
+import com.Egietje.degeweldigemod.entities.cheeseboss.*;
 import com.Egietje.degeweldigemod.entities.cheesecow.*;
 import com.Egietje.degeweldigemod.entities.tileentities.blocks.*;
 import com.Egietje.degeweldigemod.entities.tileentities.render.*;
@@ -130,20 +127,7 @@ public class ClientProxy extends CommonProxy {
 		registerBlockModel(CheeseBlocks.CHEESE_PLANKS, meta);
 		registerBlockModel(CheeseBlocks.CHEESE_CHAIR, meta);
 		registerBlockModel(CheeseBlocks.CHEESE_BANK, meta);
-
-		//Fluids
-		final Item MOLTEN_CHEESE = Item.getItemFromBlock(CheeseFluid.INSTANCE);
-		ModelBakery.registerItemVariants(MOLTEN_CHEESE);
-		ModelLoader.setCustomMeshDefinition(MOLTEN_CHEESE, new ItemMeshDefinition() {
-			public ModelResourceLocation getModelLocation(ItemStack stack) {
-				return new ModelResourceLocation(MOLTEN_CHEESE.getRegistryName(), "inventory");
-			}
-		});
-		ModelLoader.setCustomStateMapper(CheeseFluid.INSTANCE, new StateMapperBase() {
-			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
-				return new ModelResourceLocation(CheeseFluid.INSTANCE.getRegistryName(), "molten_cheese");
-			}
-		});
+		registerBlockModel(CheeseBlocks.CHEESE_STORE, meta);
 	}
 
 	public void registerClientEventHandler() {

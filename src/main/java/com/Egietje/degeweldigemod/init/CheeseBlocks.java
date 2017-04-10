@@ -3,7 +3,6 @@ package com.Egietje.degeweldigemod.init;
 import com.Egietje.degeweldigemod.DeGeweldigeMod;
 import com.Egietje.degeweldigemod.Reference;
 import com.Egietje.degeweldigemod.blocks.*;
-import com.Egietje.degeweldigemod.blocks.CheeseFluid.CheeseFluid2;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDynamicLiquid;
@@ -50,6 +49,7 @@ public class CheeseBlocks {
 	public static Block CHEESE_PLANKS;
 	public static Block CHEESE_CHAIR;
 	public static Block CHEESE_BANK;
+	public static Block CHEESE_STORE;
 	
 	public CheeseBlocks() {
 		init();
@@ -83,6 +83,7 @@ public class CheeseBlocks {
 		CHEESE_PLANKS = new CheesePlanks().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.25F);
 		CHEESE_CHAIR = new CheeseChair().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(1.25F);
 		CHEESE_BANK = new CheeseBank().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(3F);
+		CHEESE_STORE = new CheeseStore().setCreativeTab(CheeseTabs.CHEESE_BLOCKS).setHardness(3F);
 		
 		CheeseUtils.setNames(CHEESE_ORE, "cheese_ore");
 		CheeseUtils.setNames(CHEESE_ORE_NETHER, "cheese_ore_nether");
@@ -110,6 +111,7 @@ public class CheeseBlocks {
 		CheeseUtils.setNames(CHEESE_PLANKS, "cheese_planks");
 		CheeseUtils.setNames(CHEESE_CHAIR, "cheese_chair");
 		CheeseUtils.setNames(CHEESE_BANK, "cheese_bank");
+		CheeseUtils.setNames(CHEESE_STORE, "cheese_store");
 	}	
 	
 	public void register() {
@@ -135,13 +137,11 @@ public class CheeseBlocks {
 		this.registerBlock(CHEESE_STONE);
 		this.registerBlock(CHEESE_FIRE);
 		this.registerBlock(CHEESE_MIRROR);
-		FluidRegistry.registerFluid(CheeseFluid2.INSTANCE);
-		FluidRegistry.addBucketForFluid(CheeseFluid2.INSTANCE);
-		this.registerBlock(CheeseFluid.INSTANCE);
 		this.registerBlock(CHEESE_LOG);
 		this.registerBlock(CHEESE_PLANKS);
 		this.registerBlock(CHEESE_CHAIR);
 		this.registerBlock(CHEESE_BANK);
+		this.registerBlock(CHEESE_STORE);
 	}	
 	
 	private void registerBlock(Block block) {

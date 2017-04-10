@@ -16,11 +16,17 @@ import com.Egietje.degeweldigemod.init.CheeseBiomes;
 import com.Egietje.degeweldigemod.init.CheeseBlocks;
 import com.Egietje.degeweldigemod.init.CheeseItems;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockSapling;
+import net.minecraft.block.IGrowable;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
@@ -36,9 +42,11 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.LeftClickBlock;
+import net.minecraftforge.event.world.BlockEvent.CropGrowEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -56,6 +64,37 @@ public class CheeseCommonHandler {
 		World world = event.getWorld();
 		IShouldGiveItems shouldGive = world.getCapability(ShouldGiveItemsProvider.SHOULD_GIVE_CAP, null);
 		shouldGive.set(ShouldGiveItems.worldCreateGive);
+	}
+
+	@SubscribeEvent
+	public void onBonemeal(BonemealEvent event) {
+		event.setCanceled(true);
+		World world = event.getWorld();
+		BlockPos pos = event.getPos();
+		IBlockState state = world.getBlockState(pos);
+		EntityPlayer player = event.getEntityPlayer();
+		ItemStack stack;
+		if (player.getHeldItemMainhand().getItem() == Items.DYE && player.getHeldItemMainhand().getMetadata() == 15) {
+			stack = player.getHeldItemMainhand();
+		} else if (player.getHeldItemOffhand().getItem() == Items.DYE
+				&& player.getHeldItemOffhand().getMetadata() == 15) {
+			stack = player.getHeldItemOffhand();
+		} else {
+			stack = ItemStack.EMPTY;
+		}
+		boolean grown = false;
+		IGrowable igrowable;
+		if (!world.isRemote) {
+			while (state.getBlock() instanceof IGrowable
+					&& (igrowable = (IGrowable) state.getBlock()).canGrow(world, pos, state, world.isRemote)) {
+				igrowable.grow(world, world.rand, pos, state);
+				state = world.getBlockState(pos);
+				grown = true;
+			}
+			if (grown) {
+				stack.shrink(1);
+			}
+		}
 	}
 
 	@SubscribeEvent
