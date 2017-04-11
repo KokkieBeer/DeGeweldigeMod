@@ -33,10 +33,10 @@ public class CheeseBankGui extends GuiScreen {
 	public void initGui() {
 		buttonList.add(new GuiButtonExt(1, this.width / 2 - 100, this.height / 2 - 10, 200, 20,
 				"Welcome in the " + TextFormatting.YELLOW + "Cheese Bank" + TextFormatting.RESET));
-		COIN_SELL = new GuiButtonWithImage(2, this.width / 2 - 30, this.height / 2 - 30, 0, 0, 0, true);
-		GOLD_SELL = new GuiButtonWithImage(3, this.width / 2 + 10, this.height / 2 - 30, 20, 0, 0, true);
-		COIN_BUY = new GuiButtonWithImage(4, this.width / 2 - 30, this.height / 2 + 10, 0, 0, 1, true);
-		GOLD_BUY = new GuiButtonWithImage(5, this.width / 2 + 10, this.height / 2 + 10, 20, 0, 1, true);
+		COIN_SELL = new GuiButtonWithImage(2, this.width / 2 - 30, this.height / 2 - 30, 0, 0, 0);
+		GOLD_SELL = new GuiButtonWithImage(3, this.width / 2 + 10, this.height / 2 - 30, 20, 0, 0);
+		COIN_BUY = new GuiButtonWithImage(4, this.width / 2 - 30, this.height / 2 + 10, 0, 0, 1);
+		GOLD_BUY = new GuiButtonWithImage(5, this.width / 2 + 10, this.height / 2 + 10, 20, 0, 1);
 	}
 
 	@Override

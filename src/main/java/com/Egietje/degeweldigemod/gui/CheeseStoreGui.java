@@ -2,6 +2,8 @@ package com.Egietje.degeweldigemod.gui;
 
 import java.io.IOException;
 
+import com.Egietje.degeweldigemod.capability.money.IMoney;
+import com.Egietje.degeweldigemod.capability.money.MoneyProvider;
 import com.Egietje.degeweldigemod.gui.button.GuiButtonWithImage;
 
 import net.minecraft.client.gui.GuiButton;
@@ -29,20 +31,20 @@ public class CheeseStoreGui extends GuiScreen {
 	public void initGui() {
 		buttonList.add(new GuiButtonExt(1, this.width / 2 - 100, this.height / 2 - 10, 200, 20,
 				"Welcome in the " + TextFormatting.YELLOW + "Cheese Store" + TextFormatting.RESET));
-		BUY_GOLD = new GuiButtonWithImage(6, this.width / 2 - 70, this.height / 2 - 30, 20, 0, 0, false);
-		BUY_DIAMOND = new GuiButtonWithImage(7, this.width / 2 - 30, this.height / 2 - 30, 40, 0, 0, false);
-		BUY_EMERALD = new GuiButtonWithImage(8, this.width / 2 + 10, this.height / 2 - 30, 60, 0, 0, false);
-		BUY_IRON = new GuiButtonWithImage(9, this.width / 2 + 50, this.height / 2 - 30, 80, 0, 0, false);
-		BUY_BREAD = new GuiButtonWithImage(10, this.width / 2 - 110, this.height / 2 - 30, 100, 0, 0, false);
-		BUY_CARROT = new GuiButtonWithImage(11, this.width / 2 - 70, this.height / 2 - 30, 120, 0, 0, false);
-		BUY_COOKIE = new GuiButtonWithImage(12, this.width / 2 - 30, this.height / 2 - 30, 140, 0 , 0, false);
-		BUY_CAKE = new GuiButtonWithImage(13, this.width / 2 + 10, this.height / 2 - 30, 160, 0, 0, false);
-		BUY_MELON = new GuiButtonWithImage(14, this.width / 2 + 50, this.height / 2 - 30, 180, 0, 0, false);
-		BUY_CHEESE = new GuiButtonWithImage(15, this.width / 2 + 90, this.height / 2 - 30, 200, 0, 0, false);
-		BUY_CHICKEN = new GuiButtonWithImage(16, this.width / 2 - 70, this.height / 2 - 30, 220, 0, 0, false);
-		BUY_PORK = new GuiButtonWithImage(17, this.width / 2 - 30, this.height / 2 - 30, 0, 40, 0, false);
-		BUY_BEEF = new GuiButtonWithImage(18, this.width / 2 + 10, this.height / 2 - 30, 20, 40, 0, false);
-		BUY_MUTTON = new GuiButtonWithImage(19, this.width / 2 + 50, this.height / 2 - 30, 40, 40, 0, false);
+		BUY_GOLD = new GuiButtonWithImage(6, this.width / 2 - 70, this.height / 2 - 30, 20, 0, -1);
+		BUY_DIAMOND = new GuiButtonWithImage(7, this.width / 2 - 30, this.height / 2 - 30, 40, 0, -1);
+		BUY_EMERALD = new GuiButtonWithImage(8, this.width / 2 + 10, this.height / 2 - 30, 60, 0, -1);
+		BUY_IRON = new GuiButtonWithImage(9, this.width / 2 + 50, this.height / 2 - 30, 80, 0, -1);
+		BUY_BREAD = new GuiButtonWithImage(10, this.width / 2 - 110, this.height / 2 - 30, 100, 0, -1);
+		BUY_CARROT = new GuiButtonWithImage(11, this.width / 2 - 70, this.height / 2 - 30, 120, 0, -1);
+		BUY_COOKIE = new GuiButtonWithImage(12, this.width / 2 - 30, this.height / 2 - 30, 140, 0 , -1);
+		BUY_CAKE = new GuiButtonWithImage(13, this.width / 2 + 10, this.height / 2 - 30, 160, 0, -1);
+		BUY_MELON = new GuiButtonWithImage(14, this.width / 2 + 50, this.height / 2 - 30, 180, 0, -1);
+		BUY_CHEESE = new GuiButtonWithImage(15, this.width / 2 + 90, this.height / 2 - 30, 200, 0, -1);
+		BUY_CHICKEN = new GuiButtonWithImage(16, this.width / 2 - 70, this.height / 2 - 30, 220, 0, -1);
+		BUY_PORK = new GuiButtonWithImage(17, this.width / 2 - 30, this.height / 2 - 30, 0, 40, -1);
+		BUY_BEEF = new GuiButtonWithImage(18, this.width / 2 + 10, this.height / 2 - 30, 20, 40, -1);
+		BUY_MUTTON = new GuiButtonWithImage(19, this.width / 2 + 50, this.height / 2 - 30, 40, 40, -1);
 	}
 
 	@Override
@@ -86,7 +88,9 @@ public class CheeseStoreGui extends GuiScreen {
 
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		IMoney moneyCap = this.mc.player.getCapability(MoneyProvider.MONEY_CAP, null);
+		this.drawCenteredString(fontRendererObj, "Balance: " + moneyCap.get(), this.width / 2, this.height / 2 - 50, 0xffffff);
 	}
 
 	@Override

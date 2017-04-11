@@ -14,15 +14,13 @@ public class GuiButtonWithImage extends GuiButton {
 			Reference.MODID + ":textures/gui/button_images.png");
 	private int textureOffsetX;
 	private int textureOffsetY;
-	private int type;
+	private int type = -1;
 
-	public GuiButtonWithImage(int buttonID, int xPos, int yPos, int xOff,int yOff, int type, boolean bank) {
+	public GuiButtonWithImage(int buttonID, int xPos, int yPos, int xOff,int yOff, int type) {
 		super(buttonID, xPos, yPos, 20, 20, "");
 		textureOffsetX = xOff;
 		textureOffsetY = yOff;
-		if (bank) {
-			this.type = type;
-		}
+		this.type = type;
 	}
 
 	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
