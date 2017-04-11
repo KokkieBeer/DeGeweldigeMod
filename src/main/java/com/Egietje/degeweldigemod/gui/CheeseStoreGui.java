@@ -29,20 +29,20 @@ public class CheeseStoreGui extends GuiScreen {
 	public void initGui() {
 		buttonList.add(new GuiButtonExt(1, this.width / 2 - 100, this.height / 2 - 10, 200, 20,
 				"Welcome in the " + TextFormatting.YELLOW + "Cheese Store" + TextFormatting.RESET));
-		BUY_GOLD = new GuiButtonWithImage(6, this.width / 2 - 70, this.height / 2 - 30, "buy_gold", false);
-		BUY_DIAMOND = new GuiButtonWithImage(7, this.width / 2 - 30, this.height / 2 - 30, "buy_diamond", false);
-		BUY_EMERALD = new GuiButtonWithImage(8, this.width / 2 + 10, this.height / 2 - 30, "buy_emerald", false);
-		BUY_IRON = new GuiButtonWithImage(9, this.width / 2 + 50, this.height / 2 - 30, "buy_iron", false);
-		BUY_BREAD = new GuiButtonWithImage(10, this.width / 2 - 110, this.height / 2 - 30, "buy_bread", false);
-		BUY_CARROT = new GuiButtonWithImage(11, this.width / 2 - 70, this.height / 2 - 30, "buy_carrot", false);
-		BUY_COOKIE = new GuiButtonWithImage(12, this.width / 2 - 30, this.height / 2 - 30, "buy_cookie", false);
-		BUY_CAKE = new GuiButtonWithImage(13, this.width / 2 + 10, this.height / 2 - 30, "buy_cake", false);
-		BUY_MELON = new GuiButtonWithImage(14, this.width / 2 + 50, this.height / 2 - 30, "buy_cake", false);
-		BUY_CHEESE = new GuiButtonWithImage(15, this.width / 2 + 90, this.height / 2 - 30, "buy_cheese", false);
-		BUY_CHICKEN = new GuiButtonWithImage(16, this.width / 2 - 70, this.height / 2 - 30, "buy_chicken", false);
-		BUY_PORK = new GuiButtonWithImage(17, this.width / 2 - 30, this.height / 2 - 30, "buy_pork", false);
-		BUY_BEEF = new GuiButtonWithImage(18, this.width / 2 + 10, this.height / 2 - 30, "buy_beef", false);
-		BUY_MUTTON = new GuiButtonWithImage(19, this.width / 2 + 50, this.height / 2 - 30, "buy_mutton", false);
+		BUY_GOLD = new GuiButtonWithImage(6, this.width / 2 - 70, this.height / 2 - 30, 20, 0, 0, false);
+		BUY_DIAMOND = new GuiButtonWithImage(7, this.width / 2 - 30, this.height / 2 - 30, 40, 0, 0, false);
+		BUY_EMERALD = new GuiButtonWithImage(8, this.width / 2 + 10, this.height / 2 - 30, 60, 0, 0, false);
+		BUY_IRON = new GuiButtonWithImage(9, this.width / 2 + 50, this.height / 2 - 30, 80, 0, 0, false);
+		BUY_BREAD = new GuiButtonWithImage(10, this.width / 2 - 110, this.height / 2 - 30, 100, 0, 0, false);
+		BUY_CARROT = new GuiButtonWithImage(11, this.width / 2 - 70, this.height / 2 - 30, 120, 0, 0, false);
+		BUY_COOKIE = new GuiButtonWithImage(12, this.width / 2 - 30, this.height / 2 - 30, 140, 0 , 0, false);
+		BUY_CAKE = new GuiButtonWithImage(13, this.width / 2 + 10, this.height / 2 - 30, 160, 0, 0, false);
+		BUY_MELON = new GuiButtonWithImage(14, this.width / 2 + 50, this.height / 2 - 30, 180, 0, 0, false);
+		BUY_CHEESE = new GuiButtonWithImage(15, this.width / 2 + 90, this.height / 2 - 30, 200, 0, 0, false);
+		BUY_CHICKEN = new GuiButtonWithImage(16, this.width / 2 - 70, this.height / 2 - 30, 220, 0, 0, false);
+		BUY_PORK = new GuiButtonWithImage(17, this.width / 2 - 30, this.height / 2 - 30, 0, 40, 0, false);
+		BUY_BEEF = new GuiButtonWithImage(18, this.width / 2 + 10, this.height / 2 - 30, 20, 40, 0, false);
+		BUY_MUTTON = new GuiButtonWithImage(19, this.width / 2 + 50, this.height / 2 - 30, 40, 40, 0, false);
 	}
 
 	@Override

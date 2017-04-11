@@ -20,7 +20,7 @@ public class CheeseStore extends Block {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		playerIn.openGui(DeGeweldigeMod.DGMInstance, CheeseGuiHandler.BANKID, worldIn, pos.getX(), pos.getY(), pos.getZ());
+		playerIn.openGui(DeGeweldigeMod.DGMInstance, CheeseGuiHandler.STOREID, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		return true;
 	}
 }

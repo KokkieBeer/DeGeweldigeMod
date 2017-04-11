@@ -16,58 +16,12 @@ public class GuiButtonWithImage extends GuiButton {
 	private int textureOffsetY;
 	private int type;
 
-	public GuiButtonWithImage(int buttonID, int xPos, int yPos, String type, boolean bank) {
+	public GuiButtonWithImage(int buttonID, int xPos, int yPos, int xOff,int yOff, int type, boolean bank) {
 		super(buttonID, xPos, yPos, 20, 20, "");
-		if (type == "sell_coin" || type == "buy_coin") {
-			this.textureOffsetX = 0;
-			this.textureOffsetY = 0;
-		} else if (type == "sell_gold" || type == "buy_gold") {
-			this.textureOffsetX = 20;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_diamond") {
-			this.textureOffsetX = 40;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_emerald") {
-			this.textureOffsetX = 60;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_iron") {
-			this.textureOffsetX = 80;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_bread") {
-			this.textureOffsetX = 100;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_carrot") {
-			this.textureOffsetX = 120;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_cookie") {
-			this.textureOffsetX = 140;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_cake") {
-			this.textureOffsetX = 160;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_melon") {
-			this.textureOffsetX = 180;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_cheese") {
-			this.textureOffsetX = 200;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_chicken") {
-			this.textureOffsetX = 220;
-			this.textureOffsetY = 0;
-		} else if (type == "buy_pork") {
-			this.textureOffsetX = 240;
-			this.textureOffsetY = 40;
-		} else if (type == "buy_beef") {
-			this.textureOffsetX = 260;
-			this.textureOffsetY = 40;
-		} else if (type == "buy_mutton") {
-			this.textureOffsetX = 280;
-			this.textureOffsetY = 40;
-		}
-		if (bank && (type == "sell_coin" || type == "sell_gold")) {
-			this.type = 0;
-		} else if (bank && (type == "buy_coin" || type == "buy_gold")) {
-			this.type = 1;
+		textureOffsetX = xOff;
+		textureOffsetY = yOff;
+		if (bank) {
+			this.type = type;
 		}
 	}
 
